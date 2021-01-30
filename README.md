@@ -5,16 +5,16 @@ picture
 ## Heroku Link
 
 **Index**<br>
-[Markdown - User Story](#User Story)<br>
-[Markdown - Accessibility](#Accessibility)<br>
-[Markdown - API's Used](#API's Used)<br>
-[Markdown - Contributors](#Contributors)<br>
+[User Story](#UserStory)<br>
+[Accessibility](#Accessibility)<br>
+[APIs Used](#APIs)<br>
+[Contributors](#Contributors)<br>
 
-**User Story**<br>
+**UserStory**<br>
 
 **Accessibility**
 
-**API's Used**
+**APIs**
 
 **Contribuotors**
 
