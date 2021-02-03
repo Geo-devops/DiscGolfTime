@@ -1,14 +1,22 @@
 import React from 'react';
-import ChatBox from "./components/ChatBox";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Wrapper from "./components/Wrapper";
+// import ChatBox from "./components/ChatBox";
 import Navbar from "./components/Navbar";
+import Signup from "./pages/Signup"
 import './App.css';
 
 function App() {
   return (
-    <div>
-    <Navbar />
-    <ChatBox />
-    </div>
+    <Router>
+      <div>
+        <Navbar />
+        <Wrapper>
+          <Route exact path="/" component={Signup} />
+        </Wrapper>
+        
+      </div>
+    </Router>
   );
 }
 

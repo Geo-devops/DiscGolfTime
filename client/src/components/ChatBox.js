@@ -3,12 +3,6 @@ import MessageList from "./MessageList";
 
 function ChatBox() {
 
-    // function openForm() {
-    //     console.log('open clicked');
-    //     document.getElementById("myForm").style.display = "block";
-    //     console.log(document.getElementById('myForm').style.display)
-    // }
-
     function closeForm() {
         console.log('close clicked');
         document.getElementById("myForm").style.display = "none";
@@ -22,13 +16,7 @@ function ChatBox() {
 
     return (
         <div>
-            
-            {/* <button
-            className="open-button success"
-            onClick={openForm}
-            >Open Form
-            </button>
-     */}
+          
             <div className="form-popup" id="myForm">
 
                 <form className="form-container">
