@@ -22,10 +22,9 @@ code {
   border: none;
   cursor: pointer;
   opacity: 0.8;
-  position: fixed;
   bottom: 23px;
   right: 28px;
-  width: 200px;
+  width: 100px;
   opacity: 0.8;
   color: white;
 }

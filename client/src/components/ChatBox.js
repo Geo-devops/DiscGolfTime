@@ -3,27 +3,32 @@ import MessageList from "./MessageList";
 
 function ChatBox() {
 
-    function openForm() {
-        console.log('open clicked');
-        document.getElementById("myForm").style.display = "block";
-        console.log(document.getElementById('myForm').style.display)
-    }
+    // function openForm() {
+    //     console.log('open clicked');
+    //     document.getElementById("myForm").style.display = "block";
+    //     console.log(document.getElementById('myForm').style.display)
+    // }
 
     function closeForm() {
         console.log('close clicked');
         document.getElementById("myForm").style.display = "none";
     }
 
+    function sendMessage(event) {
+        event.preventDefault();
+        const message = document.getElementById("messageBox").value;
+        console.log('Message: ', message)
+    }
 
     return (
         <div>
             
-            <button
+            {/* <button
             className="open-button success"
             onClick={openForm}
             >Open Form
             </button>
-    
+     */}
             <div className="form-popup" id="myForm">
 
                 <form className="form-container">
@@ -42,6 +47,7 @@ function ChatBox() {
                     <MessageList />
 
                     <input
+                    id="messageBox"
                     type="text"
                     placeholder="Type your message here"
                     name="msg">
@@ -50,7 +56,7 @@ function ChatBox() {
                     <button
                     type="submit"
                     className="btn send"
-                    // onClick={}
+                    onClick={sendMessage}
                     >Send
                     </button>
 
