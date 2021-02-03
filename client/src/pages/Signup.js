@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Chatbox from "../components/ChatBox"
-import API from "../utils/API"
+import AUTH from "../utils/AUTH"
 
 function Signup() {
   const [firstname, setFirstname] = useState();
@@ -27,7 +27,7 @@ function Signup() {
       return;
     }
 
-    signUpUser(
+    register(
       userData.firstName,
       userData.lastName,
       userData.email,
@@ -35,14 +35,12 @@ function Signup() {
     );
   };
 
-  const signUpUser = (firstName, lastName, email, password) => {
+  const register = (firstName, lastName, email, password) => {
 
     console.log('UserData: ', firstName + lastName + email + password);
-    
-    API.signUpUser(firstName, lastName, email, password)
-    .then(() => {
-      console.log('user created YEEEE', firstName)
-    })
+
+    AUTH.register(firstName, lastName, email, password)
+    .then(console.log("User was created: " + firstName + lastName))
     .catch(handleLoginErr)
   }
 
