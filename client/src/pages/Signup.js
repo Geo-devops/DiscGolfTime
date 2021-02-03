@@ -27,7 +27,7 @@ function Signup() {
       return;
     }
 
-    register(
+    signUpUser(
       userData.firstName,
       userData.lastName,
       userData.email,
@@ -35,11 +35,11 @@ function Signup() {
     );
   };
 
-  const register = (firstName, lastName, email, password) => {
+  const signUpUser = (firstName, lastName, email, password) => {
 
     console.log('UserData: ', firstName + lastName + email + password);
 
-    AUTH.register(firstName, lastName, email, password)
+    AUTH.signUpUser(firstName, lastName, email, password)
     .then(console.log("User was created: " + firstName + lastName))
     .catch(handleLoginErr)
   }

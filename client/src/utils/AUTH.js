@@ -2,7 +2,7 @@
 import axios from "axios";
 
 export default {
-    register: function(userData) {
+    signUpUser: function(userData) {
         return axios.post("/auth/signup", userData);
     }
 };
