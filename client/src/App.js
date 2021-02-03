@@ -1,10 +1,10 @@
 import React from 'react';
-import Chat from "./components/Chat";
+import ChatBox from "./components/ChatBox";
 import './App.css';
 
 function App() {
   return (
-    <Chat />
+    <ChatBox />
   );
 }
 

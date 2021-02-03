@@ -1,6 +1,7 @@
 import React from "react";
+import MessageList from "./MessageList";
 
-function Chat() {
+function ChatBox() {
 
     function openForm() {
         console.log('open clicked');
@@ -13,8 +14,8 @@ function Chat() {
         document.getElementById("myForm").style.display = "none";
     }
 
+
     return (
-    
         <div>
             
             <button
@@ -27,7 +28,18 @@ function Chat() {
 
                 <form className="form-container">
 
+                    <button
+                    type="button"
+                    className="close"
+                    aria-label="Close"
+                    onClick={closeForm}
+                    >
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+
                     <h1>Chat Test</h1>
+                    
+                    <MessageList />
 
                     <input
                     type="text"
@@ -37,16 +49,9 @@ function Chat() {
 
                     <button
                     type="submit"
-                    className="btn"
+                    className="btn send"
                     // onClick={}
                     >Send
-                    </button>
-
-                    <button
-                    type="submit"
-                    className="btn cancel"
-                    onClick={closeForm}
-                    >Close
                     </button>
 
                 </form>
@@ -55,4 +60,4 @@ function Chat() {
     )
 }
 
-export default Chat;
+export default ChatBox;
