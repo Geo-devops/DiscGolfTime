@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Wrapper from "./components/Wrapper";
-// import ChatBox from "./components/ChatBox";
 import Navbar from "./components/Navbar";
 import Signup from "./pages/Signup"
 import './App.css';
