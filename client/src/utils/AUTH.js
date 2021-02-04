@@ -2,7 +2,8 @@
 import axios from "axios";
 
 export default {
-    signUpUser: function(userData) {
-        return axios.post("/auth/signup", userData);
+    signUpUser: function(newUser) {
+        console.log('USERDATA!!!!!: ', newUser);
+        return axios.post("/auth/signup", newUser);
     }
 };

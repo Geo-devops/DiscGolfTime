@@ -5,47 +5,34 @@ import AUTH from "../utils/AUTH"
 function Signup() {
   const [firstname, setFirstname] = useState();
   const [lastname, setLastname] = useState();
-  const [email, setEmail] = useState();
+  const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
   const handleSubmit = e => {
     e.preventDefault();
     console.log("name is " + firstname + " " + lastname);
-    console.log("email is " + email)
+    console.log("username is " + username)
     console.log("password is " + password);
 
-    const userData = {
+    const newUser = {
       firstName: firstname.trim(),
       lastName: lastname.trim(),
-      email: email.trim(),
+      username: username.trim(),
       password: password.trim()
     };
 
-    console.log(userData);
+    AUTH.signUpUser({
+      // firstName: firstname.trim(),
+      // lastName: lastname.trim(),
+      // username: username.trim(),
+      // password: password.trim()
 
-    if (!userData.email || !userData.password) {
-      return;
-    }
+      newUser
 
-    signUpUser(
-      userData.firstName,
-      userData.lastName,
-      userData.email,
-      userData.password
-    );
-  };
+    })
+    .then(console.log('USER ADDED!'))
+    .catch(err => console.log(err));
 
-  const signUpUser = (firstName, lastName, email, password) => {
-
-    console.log('UserData: ', firstName + lastName + email + password);
-
-    AUTH.signUpUser(firstName, lastName, email, password)
-    .then(console.log("User was created: " + firstName + lastName))
-    .catch(handleLoginErr)
-  }
-
-  function handleLoginErr() {
-    console.log('User was not created!');
   };
 
   return (
@@ -81,10 +68,10 @@ function Signup() {
             <div className="col" size="12">
               <input
                 className="form-control"
-                type="email"
-                placeholder="Email"
-                name="email"
-                onChange={e => setEmail(e.target.value)}
+                type="username"
+                placeholder="username"
+                name="username"
+                onChange={e => setUsername(e.target.value)}
               />
             </div>
           </div>
