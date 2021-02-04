@@ -31,7 +31,7 @@ function Signup() {
 
     })
     .then(console.log('USER ADDED!'))
-    .catch(err => console.log(err));
+    .catch(err => console.log('OOOOOPS: ', err));
 
   };
 
