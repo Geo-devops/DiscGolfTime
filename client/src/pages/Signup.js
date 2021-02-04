@@ -14,23 +14,20 @@ function Signup() {
     console.log("username is " + username)
     console.log("password is " + password);
 
-    const newUser = {
+    // const newUser = {
+    //   firstName: firstname.trim(),
+    //   lastName: lastname.trim(),
+    //   username: username.trim(),
+    //   password: password.trim()
+    // };
+
+    AUTH.signUpUser({
       firstName: firstname.trim(),
       lastName: lastname.trim(),
       username: username.trim(),
       password: password.trim()
-    };
-
-    AUTH.signUpUser({
-      // firstName: firstname.trim(),
-      // lastName: lastname.trim(),
-      // username: username.trim(),
-      // password: password.trim()
-
-      newUser
-
+      // newUser 
     })
-    .then(console.log('USER ADDED!'))
     .catch(err => console.log('OOOOOPS: ', err));
 
   };
