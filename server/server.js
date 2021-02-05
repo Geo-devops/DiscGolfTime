@@ -16,15 +16,15 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use('/', express.static(path.join(__dirname, '../client/build')));
 
-// // Passport
-// app.use(passport.initialize());
-// app.use(passport.session()); // will call the deserializeUser
-// app.use(session({
-//   secret: process.env.AUTH_SECRET,
-//   store: new MongoStore({ mongooseConnection: dbConnection }),
-//   resave: false,
-//   saveUninitialized: false
-// }));
+// Passport
+app.use(passport.initialize());
+app.use(passport.session()); // will call the deserializeUser
+app.use(session({
+  secret: 'secretIDhere',
+  store: new MongoStore({ mongooseConnection: dbConnection }),
+  resave: false,
+  saveUninitialized: false
+}));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/'))
