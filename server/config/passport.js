@@ -4,10 +4,10 @@ const db = require('../models');
 
 const localStrategy = new LocalStrategy(
 	{
-		usernameField: 'email' // not necessary, DEFAULT
+		usernameField: 'username' // not necessary, DEFAULT
 	},
 	function(username, password, done) {
-		db.User.findOne({ 'email': username }, (err, userMatch) => {
+		db.User.findOne({ 'username': username }, (err, userMatch) => {
 			if (err) {
 				return done(err)
 			}
@@ -31,7 +31,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
 	db.User.findOne(
 		{ _id: id },
-		'firstName lastName email',
+		'firstName lastName username',
 		(err, user) => {
 			// console.log(user);
 			done(null, user);
