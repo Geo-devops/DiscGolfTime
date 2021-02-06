@@ -5,7 +5,9 @@
   "private": true,
   "dependencies": {
     "react": "^16.8.6",
+    "react-bootstrap": "^1.4.3",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "2.1.8"
   },
   "scripts": {

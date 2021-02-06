@@ -8,6 +8,9 @@ import Dashboard from "./pages/Dashboard"
 import './App.css';
 
 function App() {
+
+  // const [loggedInUser, setLoggedInUser] = useState();
+
   return (
     <Router>
       <div>

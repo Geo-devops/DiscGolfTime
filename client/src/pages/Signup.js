@@ -84,6 +84,11 @@ function Signup() {
           </button>
         </div>
       </form>
+      <div className="container">
+        <div className="row form-group">
+          Already a user? Log In
+        </div>
+      </div>
       <Chatbox />
     </div>
   );
