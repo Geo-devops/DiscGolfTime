@@ -4,6 +4,7 @@ import Chatbox from "../components/ChatBox"
 
 function Dashboard (props) {
 
+    console.log(props);
     // const getTheUser = () => {
     //     AUTH.getUser()
     //     .then(results=> {
@@ -14,7 +15,7 @@ function Dashboard (props) {
 
     return(
         <div className="m-4">
-            Welcome user {props.user}
+            {/* Welcome user {user} */}
             <Chatbox />
      
         </div>
