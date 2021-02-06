@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Chatbox from "../components/ChatBox"
 import AUTH from "../utils/AUTH"
 
-function Login () {
+function Login (props) {
 
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
@@ -17,7 +17,9 @@ function Login () {
           password: password.trim()
         })
         .then(() => {
-            window.location.replace("/welcome")
+            window.location.replace("/welcome");
+            console.log(username);
+            props.setLoggedInUser(username);
         })
         .catch(err => console.log('OOOOOPS: ', err));
     }
@@ -54,9 +56,15 @@ function Login () {
                 <button className="btn btn-success" type="submit">
                     Log In
                 </button>
+                <hr></hr>
                 </div>
             </form>
             <Chatbox />
+            <div className="container text-center mt-4">
+                New To Tee Time?
+                <span> </span>
+                <a href="/" className="signup">Sign Up</a>
+            </div>
         </div>
     )
 }

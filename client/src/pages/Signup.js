@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Chatbox from "../components/ChatBox"
-import AUTH from "../utils/AUTH"
+import Chatbox from "../components/ChatBox";
+import AUTH from "../utils/AUTH";
 
 function Signup() {
   const [firstname, setFirstname] = useState();
@@ -33,6 +33,7 @@ function Signup() {
       <div className="m-4">
         <h2>Sign Up</h2>
       </div>
+      
       <form onSubmit={handleSubmit}>
         <div className="container mt-3 px-5">
           <div className="row form-group">
@@ -82,8 +83,15 @@ function Signup() {
           <button className="btn btn-success" type="submit">
             Sign Up
           </button>
+        <hr></hr>
         </div>
       </form>
+      
+      <div className="container text-center mt-4">
+        Already a user?
+        <span> </span>
+        <a href="/login" className="login">Log In</a>
+      </div>
       <Chatbox />
     </div>
   );
