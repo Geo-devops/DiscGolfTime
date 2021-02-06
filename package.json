@@ -41,10 +41,6 @@
     "mongoose": "^5.3.4",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
-    "react-bootstrap": "^1.4.3",
-    "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1"
+    "passport-local": "^1.0.0"
   }
 }
