@@ -59,6 +59,11 @@ function Login (props) {
                 </div>
             </form>
             <Chatbox />
+            <div className="container text-center mt-4">
+                New To Tee Time?
+                <span> </span>
+                <a href="/signup" className="signup">Sign Up</a>
+            </div>
         </div>
     )
 }
