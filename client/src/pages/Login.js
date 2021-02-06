@@ -56,13 +56,14 @@ function Login (props) {
                 <button className="btn btn-success" type="submit">
                     Log In
                 </button>
+                <hr></hr>
                 </div>
             </form>
             <Chatbox />
             <div className="container text-center mt-4">
                 New To Tee Time?
                 <span> </span>
-                <a href="/signup" className="signup">Sign Up</a>
+                <a href="/" className="signup">Sign Up</a>
             </div>
         </div>
     )
