@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Chatbox from "../components/ChatBox"
 import AUTH from "../utils/AUTH"
 
-function Login (props) {
+function Login () {
 
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
@@ -16,13 +16,15 @@ function Login (props) {
           username: username.trim(),
           password: password.trim()
         })
-        .then(() => {
-            window.location.replace("/welcome");
-            console.log(username);
-            props.setLoggedInUser(username);
-        })
+        .then(results => {
+            const loggedInUser = results.data.user
+            console.log('loggedInUser: ', loggedInUser);
+            
+            // window.location.replace("/welcome");
+        })       
         .catch(err => console.log('OOOOOPS: ', err));
     }
+
 
     return (
         <div>

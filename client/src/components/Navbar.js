@@ -2,6 +2,8 @@ import React from "react";
 
 function Navbar() {
 
+    //AUTH route to get users and search/sort them. When you click on a user, then it opens the chatbox using openForm()
+
     function openForm() {
         console.log('open clicked');
         document.getElementById("myForm").style.display = "block";

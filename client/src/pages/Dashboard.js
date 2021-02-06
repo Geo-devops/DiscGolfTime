@@ -1,23 +1,19 @@
 import React from "react";
-import Chatbox from "../components/ChatBox"
+import Navbar from "../components/Navbar"
+import Chatbox from "../components/ChatBox";
 // import AUTH from "../utils/AUTH"
 
-function Dashboard (props) {
-
-    console.log(props);
-    // const getTheUser = () => {
-    //     AUTH.getUser()
-    //     .then(results=> {
-    //         console.log(results)
-    //     })
-    //     .catch(err => console.log(err));
-    // }
+function Dashboard () {
 
     return(
-        <div className="m-4">
+        
+        <div>
+            <Navbar />
+            <div className="m-4">
             {/* Welcome user {user} */}
             <Chatbox />
      
+            </div>
         </div>
     )
 }

@@ -7,10 +7,9 @@ export default {
         return axios.post("/auth/signup", newUser);
     },
     loginUser: function(user) {
-        console.log('USERRR !!!!: ', user);
         return axios.post("/auth/login", user);
     },
-    getUser: function() {
-        return axios.get("/auth/user");
+    getUser: function(user) {
+        return axios.get("/auth/user", user);
     }
 };
