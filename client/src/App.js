@@ -13,8 +13,9 @@ function App() {
 
   // If you don't have a token, and the address ends in /welcome, then go back to login
     // This allows the user to access both login and signup without a token. It only prohibits welcome
-  if (!token && (window.location.pathname === "/welcome")) {
-    console.log('Condition met');
+  if (!token) {
+    // && (window.location.pathname === "/welcome")
+    // console.log('Condition met');
     return <Login setToken={setToken} />
   }
 
@@ -22,9 +23,9 @@ function App() {
     <Router>
       <div>
         <Wrapper>
-          <Route exact path="/" component={Signup} />
+          <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={Login} />
-          <Route exact path ="/welcome" component={Dashboard} />
+          <Route exact path ="/" component={Dashboard} />
         </Wrapper>
         
       </div>

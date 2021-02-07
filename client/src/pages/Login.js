@@ -1,28 +1,31 @@
 import React, { useState } from "react";
-import Chatbox from "../components/ChatBox"
-import AUTH from "../utils/AUTH"
+import AUTH from "../utils/AUTH";
+import PropTypes from 'prop-types';
 
-function Login () {
+
+export default function Login ({ setToken }) {
 
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
   
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
+
         console.log("username is " + username)
         console.log("password is " + password);
 
-        AUTH.loginUser({
-          username: username.trim(),
-          password: password.trim()
+        const token = await AUTH.loginUser({
+          username,
+          password
         })
-        .then(results => {
-            const loggedInUser = results.data.user
-            console.log('loggedInUser: ', loggedInUser);
+        // .then(results => {
+        //     const loggedInUser = results.data.user
+        //     console.log('loggedInUser: ', loggedInUser);
+        // })       
+        setToken(token);
             
-            // window.location.replace("/welcome");
-        })       
-        .catch(err => console.log('OOOOOPS: ', err));
+        // window.location.replace("/welcome");
+        // .catch(err => console.log('OOOOOPS: ', err));
     }
 
 
@@ -61,7 +64,6 @@ function Login () {
                 <hr></hr>
                 </div>
             </form>
-            <Chatbox />
             <div className="container text-center mt-4">
                 New To Tee Time?
                 <span> </span>
@@ -71,4 +73,6 @@ function Login () {
     )
 }
 
-export default Login;
+Login.propTypes = {
+    setToken: PropTypes.func.isRequired
+};

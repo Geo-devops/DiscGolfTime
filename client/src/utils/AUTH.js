@@ -6,8 +6,9 @@ export default {
         console.log('USERDATA!!!!!: ', newUser);
         return axios.post("/auth/signup", newUser);
     },
-    loginUser: function(user) {
-        return axios.post("/auth/login", user);
+    loginUser: async function(user) {
+        return axios.post("/auth/login", user)
+        // .then(data => data.json());
     },
     getUser: function(user) {
         return axios.get("/auth/user", user);
