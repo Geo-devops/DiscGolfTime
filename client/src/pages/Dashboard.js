@@ -10,7 +10,7 @@ function Dashboard () {
         <div>
             <Navbar />
             <div className="m-4">
-            {/* Welcome user {user} */}
+            Welcome user!
             <Chatbox />
      
             </div>
