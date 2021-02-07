@@ -3,12 +3,12 @@ import axios from "axios";
 
 export default {
     signUpUser: function(newUser) {
-        console.log('USERDATA!!!!!: ', newUser);
+        console.log('USERDATA for signup: ', newUser);
         return axios.post("/auth/signup", newUser);
     },
     loginUser: async function(user) {
+        console.log('data for login: ', user)
         return axios.post("/auth/login", user)
-        // .then(data => data.json());
     },
     getUser: function(user) {
         return axios.get("/auth/user", user);

@@ -19,16 +19,8 @@ export default function Login ({ setToken }) {
           username,
           password
         })
-        // .then(results => {
-        //     const loggedInUser = results.data.user
-        //     console.log('loggedInUser: ', loggedInUser);
-        // })       
-        setToken(token);
-            
-        // window.location.replace("/welcome");
-        // .catch(err => console.log('OOOOOPS: ', err));
+        setToken(token)
     }
-
 
     return (
         <div>
@@ -70,7 +62,7 @@ export default function Login ({ setToken }) {
                             </div>
                         </form>
                     </div>
-                    <Signup />
+                    <Signup setToken={setToken} />
                 </div>
             </div>
         </div>

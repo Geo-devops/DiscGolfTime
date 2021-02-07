@@ -1,28 +1,39 @@
 import React, { useState } from "react";
 import AUTH from "../utils/AUTH";
+import Login from "../pages/Login";
+import PropTypes from 'prop-types';
 
-function Signup() {
+export default function Signup({ setToken }) {
+  
   const [firstname, setFirstname] = useState();
   const [lastname, setLastname] = useState();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  
+  const handleLogin = async () => {
+      const token = await AUTH.loginUser({
+        username,
+        password
+      })
+      setToken(token);
+  }
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log("name is " + firstname + " " + lastname);
-    console.log("username is " + username)
-    console.log("password is " + password);
+  const handleSignup = async e => {
+      e.preventDefault();
+      console.log("name is " + firstname + " " + lastname);
+      console.log("username is " + username)
+      console.log("password is " + password);
 
-    AUTH.signUpUser({
-      firstName: firstname.trim(),
-      lastName: lastname.trim(),
-      username: username.trim(),
-      password: password.trim()
-      // newUser 
-    })
-    .catch(err => console.log('OOOOOPS: ', err));
+      await AUTH.signUpUser({
+        firstName: firstname,
+        lastName: lastname,
+        username: username,
+        password: password
+      })
 
+      return handleLogin();
   };
+
 
   return (
     <div className="col-sm-6 px-5">
@@ -30,7 +41,7 @@ function Signup() {
         <h3>New Users</h3>
       <hr></hr>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSignup}>
         <div className="container mt-3 px-5">
           <div className="row form-group">
             <div className="col" size="12">
@@ -85,4 +96,6 @@ function Signup() {
   );
 }
 
-export default Signup;
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired
+};
