@@ -5,6 +5,7 @@ import Chatbox from "../components/ChatBox";
 export default function Dashboard () {
     
     const [users, setUsers] = useState()
+    console.log('FROM DASHBOARD, users: ', users);
 
     return(
         
