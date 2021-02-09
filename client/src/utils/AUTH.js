@@ -7,10 +7,11 @@ export default {
         return axios.post("/auth/signup", newUser);
     },
     loginUser: async function(user) {
-        console.log('data for login: ', user)
-        return axios.post("/auth/login", user)
+        console.log('data for login: ', user);
+        return axios.post("/auth/login", user);
     },
-    getUser: function(user) {
-        return axios.get("/auth/user", user);
+    findAllUsers: async function() {
+        console.log('findall');
+        return axios.get("/auth/users/");
     }
 };

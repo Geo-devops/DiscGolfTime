@@ -1,14 +1,18 @@
-import React from "react";
-import Navbar from "../components/Navbar"
+import React, { useState } from "react";
+import UserNavbar from "../components/Navbar"
 import Chatbox from "../components/ChatBox";
-// import AUTH from "../utils/AUTH"
 
-function Dashboard () {
+export default function Dashboard () {
+    
+    const [users, setUsers] = useState()
 
     return(
         
         <div>
-            <Navbar />
+            <UserNavbar
+            users={users}
+            setUsers={setUsers}
+            />
             <div className="m-4">
             Welcome user!
             <Chatbox />
@@ -17,5 +21,3 @@ function Dashboard () {
         </div>
     )
 }
-
-export default Dashboard;

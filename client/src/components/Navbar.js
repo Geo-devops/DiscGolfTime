@@ -1,29 +1,54 @@
 import React from "react";
+import AUTH from "../utils/AUTH";
+import Dropdown from 'react-bootstrap/Dropdown'
 
-function Navbar() {
+export default function Navbar( { users, setUsers }) {
 
     //AUTH route to get users and search/sort them. When you click on a user, then it opens the chatbox using openForm()
+    
+    // const userID = JSON.parse(localStorage.token).token
+    // console.log('userID: ', userID);
+    // const objectId = `ObjectId("${userID}")`
+    // console.log('objectId: ', objectId)
+    
+    // const getUsers = () => {
+    //     AUTH.findAllUsers()
+    //     .then(results => {
+    //         const allUsers = results.data
+    //         console.log('All Users: ', allUsers)
+    //     })
+    //     document.getElementById("myForm").style.display = "block";
+    // }
 
-    function openForm() {
+    const openForm = () => {
         console.log('open clicked');
         document.getElementById("myForm").style.display = "block";
     }
-    
-    function logout() {
-        console.log('logout clicked');
+
+    const getUsers = async e => {
+        const allUsers = await AUTH.findAllUsers()
+        setUsers(allUsers)
     }
 
-    return(
-        <nav className="navbar navbar-light bg-light">
+    const logout = () => {
+        console.log('logout clicked');
+        localStorage.clear();
+        window.location.reload();
+    }
+
+    if (!users) {
+
+        return(
+            <nav className="navbar navbar-light bg-light">
             <span className="navbar-brand mb-0 h1">Navbar gonna be so lit</span>
             
             <div className="nav navbar-right">
 
-            <button
-            className="open-button success mr-3"
-            onClick={openForm}
-            >Chat
-            </button>
+            <Dropdown className="mr-3" onClick={getUsers}>
+                <Dropdown.Toggle className="open-button" variant="success" id="dropdown-basic">
+                    Chat
+                </Dropdown.Toggle>
+            </Dropdown>
 
             <button
             className="open-button success mr-3"
@@ -34,6 +59,38 @@ function Navbar() {
     
         </nav>
     )
+    
+
+} 
+else 
+{
+    return(
+        <nav className="navbar navbar-light bg-light">
+        <span className="navbar-brand mb-0 h1">Navbar gonna be so lit</span>
+        
+        <div className="nav navbar-right">
+
+        <Dropdown className="mr-3" onClick={getUsers}>
+            <Dropdown.Toggle className="open-button" variant="success" id="dropdown-basic">
+                Chat
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+                {users.data.map(result => (
+                    <Dropdown.Item onClick={openForm} href="#/action-1">{result.firstName} {result.lastName}</Dropdown.Item>
+                    ))}
+            </Dropdown.Menu>
+        </Dropdown>
+
+        <button
+        className="open-button success mr-3"
+        onClick={logout}
+        >Log Out
+        </button>
+        </div>
+
+    </nav>
+    )
 }
 
-export default Navbar;
+}
