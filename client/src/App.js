@@ -4,7 +4,7 @@ import Wrapper from "./components/Wrapper";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard"
 import './App.css';
-import useToken from './useToken';
+import useToken from './hooks/useToken';
 
 function App() {
 
