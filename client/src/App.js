@@ -1,30 +1,24 @@
-import React, {useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Wrapper from "./components/Wrapper";
-// import Navbar from "./components/Navbar";
-// import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard"
 import './App.css';
+import useToken from './useToken';
 
 function App() {
 
-  const [token, setToken] = useState();
+  const { token, setToken } = useToken();
 
-  // If you don't have a token, and the address ends in /welcome, then go back to login
-    // This allows the user to access both login and signup without a token. It only prohibits welcome
   if (!token) {
-    // && (window.location.pathname === "/welcome")
     return <Login setToken={setToken} />
   }
-
-
 
   return (
     <Router>
       <div>
         <Wrapper>
-          {/* <Route exact path="/signup" component={Signup} /> */}
+          
           <Route exact path="/login" component={Login} />
           <Route exact path ="/" component={Dashboard} />
         </Wrapper>

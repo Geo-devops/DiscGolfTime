@@ -62,7 +62,7 @@ export default function Login ({ setToken }) {
                             </div>
                         </form>
                     </div>
-                    <Signup setToken={setToken} />
+                    {/* <Signup setToken={setToken} /> */}
                 </div>
             </div>
         </div>
