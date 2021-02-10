@@ -6,19 +6,6 @@ export default function Navbar( { users, setUsers }) {
 
     //AUTH route to get users and search/sort them. When you click on a user, then it opens the chatbox using openForm()
     
-    // const userID = JSON.parse(localStorage.token).token
-    // console.log('userID: ', userID);
-    // const objectId = `ObjectId("${userID}")`
-    // console.log('objectId: ', objectId)
-    
-    // const getUsers = () => {
-    //     AUTH.findAllUsers()
-    //     .then(results => {
-    //         const allUsers = results.data
-    //         console.log('All Users: ', allUsers)
-    //     })
-    //     document.getElementById("myForm").style.display = "block";
-    // }
 
     const openForm = () => {
         console.log('open clicked');
@@ -31,12 +18,9 @@ export default function Navbar( { users, setUsers }) {
         // console.log('allUsers before delete: ', allUsers)
         let i;
         for (i = 0; i < allUsers.length; i++) {
-            // console.log('allUsers[i].id: ', allUsers[i]._id)
             if (allUsers[i]._id === localStorage.token.slice(10,34)) {
                 const key = allUsers[i]
-                // console.log('We have a match! AllUsers[i]._id: ', allUsers[i]._id + " localStorage: " + localStorage.token.slice(10,34))
                 allUsers.splice(key,1)
-                // console.log('deleted key: ', key)
                 // console.log('allUsers after delete: ', allUsers)
             }
         }
