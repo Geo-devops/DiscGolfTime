@@ -27,12 +27,18 @@ export default function Navbar( { users, setUsers }) {
 
     const getUsers = async e => {
         const users = await AUTH.findAllUsers()
-        const allUsers = users.data
-        console.log('users.data: ', users.data)
+        let allUsers = users.data
+        // console.log('allUsers before delete: ', allUsers)
         let i;
         for (i = 0; i < allUsers.length; i++) {
-            console.log('allUser ids: ', allUsers[i]._id)
-            console.log('LocalStorage: ', localStorage);
+            // console.log('allUsers[i].id: ', allUsers[i]._id)
+            if (allUsers[i]._id === localStorage.token.slice(10,34)) {
+                const key = allUsers[i]
+                // console.log('We have a match! AllUsers[i]._id: ', allUsers[i]._id + " localStorage: " + localStorage.token.slice(10,34))
+                allUsers.splice(key,1)
+                // console.log('deleted key: ', key)
+                // console.log('allUsers after delete: ', allUsers)
+            }
         }
         setUsers(allUsers)
     }
@@ -83,7 +89,7 @@ else
 
             <Dropdown.Menu>
                 {users.map(result => (
-                    <Dropdown.Item onClick={openForm} href="#/action-1">{result.firstName} {result.lastName}</Dropdown.Item>
+                    <Dropdown.Item key={result._id} onClick={openForm} href="#/action-1">{result.firstName} {result.lastName}</Dropdown.Item>
                     ))}
             </Dropdown.Menu>
         </Dropdown>
