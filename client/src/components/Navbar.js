@@ -26,7 +26,14 @@ export default function Navbar( { users, setUsers }) {
     }
 
     const getUsers = async e => {
-        const allUsers = await AUTH.findAllUsers()
+        const users = await AUTH.findAllUsers()
+        const allUsers = users.data
+        console.log('users.data: ', users.data)
+        let i;
+        for (i = 0; i < allUsers.length; i++) {
+            console.log('allUser ids: ', allUsers[i]._id)
+            console.log('LocalStorage: ', localStorage);
+        }
         setUsers(allUsers)
     }
 
@@ -75,7 +82,7 @@ else
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-                {users.data.map(result => (
+                {users.map(result => (
                     <Dropdown.Item onClick={openForm} href="#/action-1">{result.firstName} {result.lastName}</Dropdown.Item>
                     ))}
             </Dropdown.Menu>

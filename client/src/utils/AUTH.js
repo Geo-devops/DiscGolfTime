@@ -7,8 +7,8 @@ export default {
         return axios.post("/auth/signup", newUser);
     },
     loginUser: async function(user) {
-        console.log('data for login: ', user);
-        return axios.post("/auth/login", user);
+            console.log('data for login: ', user);
+            return axios.post("/auth/login", user);
     },
     findAllUsers: async function() {
         console.log('findall');
