@@ -3,14 +3,15 @@ import axios from "axios";
 
 export default {
     signUpUser: function(newUser) {
-        console.log('USERDATA!!!!!: ', newUser);
+        console.log('USERDATA for signup: ', newUser);
         return axios.post("/auth/signup", newUser);
     },
-    loginUser: function(user) {
-        console.log('USERRR !!!!: ', user);
+    loginUser: async function(user) {
+        console.log('data for login: ', user);
         return axios.post("/auth/login", user);
     },
-    getUser: function() {
-        return axios.get("/auth/user");
+    findAllUsers: async function() {
+        console.log('findall');
+        return axios.get("/auth/users/");
     }
 };

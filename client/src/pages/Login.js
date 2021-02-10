@@ -1,72 +1,75 @@
 import React, { useState } from "react";
-import Chatbox from "../components/ChatBox"
-import AUTH from "../utils/AUTH"
+import AUTH from "../utils/AUTH";
+import Signup from "../components/Signup"
+import PropTypes from 'prop-types';
 
-function Login (props) {
+
+export default function Login ({ setToken }) {
 
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
   
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
+
         console.log("username is " + username)
         console.log("password is " + password);
 
-        AUTH.loginUser({
-          username: username.trim(),
-          password: password.trim()
+        const token = await AUTH.loginUser({
+          username,
+          password
         })
-        .then(() => {
-            window.location.replace("/welcome");
-            console.log(username);
-            props.setLoggedInUser(username);
-        })
-        .catch(err => console.log('OOOOOPS: ', err));
+        setToken(token)
+        console.log(token);
     }
 
     return (
         <div>
-            <div className="m-4">
-                <h2>Log In</h2>
-            </div>
-            <form onSubmit={handleSubmit}>
-                <div className="container mt-3 px-5">
-                    <div className="row form-group">
-                        <div className="col" size="12">
-                        <input
-                            className="form-control"
-                            type="text"
-                            placeholder="Username"
-                            name="username"
-                            onChange={e => setUsername(e.target.value)}
-                        />
+            <div className="container">
+                <h1 className="text-center m-4">Welcome to Tee Time!</h1>
+                <div className="row">
+                    <div className="col-sm-6 px-5">
+                        <div className="m-4 text-center">
+                            <h3>Log In</h3>
+                            <hr></hr>
                         </div>
+                        <form onSubmit={handleSubmit}>
+                            <div className="container mt-3 px-5">
+                                <div className="row form-group">
+                                    <div className="col" size="12">
+                                    <input
+                                        className="form-control"
+                                        type="text"
+                                        placeholder="Username"
+                                        name="username"
+                                        onChange={e => setUsername(e.target.value)}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="row form-group">
+                                    <div className="col" size="12">
+                                    <input
+                                        className="form-control"
+                                        type="password"
+                                        placeholder="Password"
+                                        name="password"
+                                        onChange={e => setPassword(e.target.value)}
+                                        />
+                                    </div>
+                                </div>
+                            <button className="btn btn-success" type="submit">
+                                Log In
+                            </button>
+                            </div>
+                        </form>
                     </div>
-                    <div className="row form-group">
-                        <div className="col" size="12">
-                        <input
-                            className="form-control"
-                            type="password"
-                            placeholder="Password"
-                            name="password"
-                            onChange={e => setPassword(e.target.value)}
-                        />
-                        </div>
-                    </div>
-                <button className="btn btn-success" type="submit">
-                    Log In
-                </button>
-                <hr></hr>
+                    <Signup setToken={setToken} />
                 </div>
-            </form>
-            <Chatbox />
-            <div className="container text-center mt-4">
-                New To Tee Time?
-                <span> </span>
-                <a href="/" className="signup">Sign Up</a>
             </div>
         </div>
     )
 }
 
-export default Login;
+Login.propTypes = {
+    setToken: PropTypes.func.isRequired
+};

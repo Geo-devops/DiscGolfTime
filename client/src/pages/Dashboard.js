@@ -1,23 +1,24 @@
-import React from "react";
-import Chatbox from "../components/ChatBox"
-// import AUTH from "../utils/AUTH"
+import React, { useState } from "react";
+import UserNavbar from "../components/Navbar"
+import Chatbox from "../components/ChatBox";
 
-function Dashboard () {
-
-    // const getTheUser = () => {
-    //     AUTH.getUser()
-    //     .then(results=> {
-    //         console.log(results)
-    //     })
-    //     .catch(err => console.log(err));
-    // }
+export default function Dashboard () {
+    
+    const [users, setUsers] = useState()
+    console.log('FROM DASHBOARD, users: ', users);
 
     return(
+        
         <div>
-            Welcome user
+            <UserNavbar
+            users={users}
+            setUsers={setUsers}
+            />
+            <div className="m-4">
+            Welcome user!
             <Chatbox />
+     
+            </div>
         </div>
     )
 }
-
-export default Dashboard;
