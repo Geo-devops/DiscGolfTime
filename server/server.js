@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const cors = require("cors");
 const morgan = require('morgan');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
@@ -15,12 +16,20 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use('/', express.static(path.join(__dirname, '../client/build')));
+app.use(cors());
+
+//Cors for login token
+app.use('/login', (req, res) => {
+  res.send({
+    token: 'test123'
+  });
+});
 
 // Passport
 app.use(passport.initialize());
 app.use(passport.session()); // will call the deserializeUser
 app.use(session({
-  secret: process.env.AUTH_SECRET,
+  secret: 'secretIDhere',
   store: new MongoStore({ mongooseConnection: dbConnection }),
   resave: false,
   saveUninitialized: false
