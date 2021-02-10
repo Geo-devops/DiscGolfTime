@@ -1,16 +1,19 @@
-import React from "react";
+import React, {useState } from "react";
 import AUTH from "../utils/AUTH";
-import Dropdown from 'react-bootstrap/Dropdown'
+import Dropdown from 'react-bootstrap/Dropdown';
+import FormControl from 'react-bootstrap/FormControl';
 
 export default function Navbar( { users, setUsers }) {
 
     //AUTH route to get users and search/sort them. When you click on a user, then it opens the chatbox using openForm()
 
+    // Dropdown needs access to the DOM of the Menu to measure it
+    
     const openForm = () => {
         console.log('open clicked');
         document.getElementById("myForm").style.display = "block";
     }
-
+    
     const getUsers = async e => {
         const users = await AUTH.findAllUsers()
         console.log('users: ', users);
@@ -27,18 +30,46 @@ export default function Navbar( { users, setUsers }) {
             }
         }
         setUsers(allUsers)
-    }
 
+    }
+    
     const logout = () => {
         console.log('logout clicked');
         localStorage.clear();
         window.location.reload();
     }
 
-    // console.log(users);
-
+    const CustomMenu = React.forwardRef(
+        ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
+            const [value, setValue] = useState('');
+        
+            return (
+                <div
+                ref={ref}
+                style={style}
+                className={className}
+                aria-labelledby={labeledBy}
+                >
+                <FormControl
+                    autoFocus
+                    className="mx-3 my-2 w-auto"
+                    placeholder="Type to find users"
+                    onChange={(e) => setValue(e.target.value)}
+                    value={value}
+                />
+                <ul className="list-unstyled">
+                    {React.Children.toArray(children).filter(
+                    (child) =>
+                        !value || child.props.children.includes(value),
+                    )}
+                </ul>
+                </div>
+            );
+        },
+    );
+    
     if (!users) {
-
+        
         return(
             <nav className="navbar navbar-light bg-light">
             <span className="navbar-brand mb-0 h1">Navbar gonna be so lit</span>
@@ -68,27 +99,33 @@ else
     return(
         <nav className="navbar navbar-light bg-light">
         <span className="navbar-brand mb-0 h1">Navbar gonna be so lit</span>
+
         
         <div className="nav navbar-right">
+            
 
-        <Dropdown className="mr-3" onClick={getUsers}>
-            <Dropdown.Toggle className="open-button" variant="success" id="dropdown-basic">
-                Chat
-            </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-                {console.log('INSIDE RETURN USERS: ', users)}
-                {users.map(result => (
-                    <Dropdown.Item key={result._id} onClick={openForm} href="#/action-1">{result.firstName} {result.lastName}</Dropdown.Item>
-                    ))}
-            </Dropdown.Menu>
-        </Dropdown>
+            <Dropdown className="mr-3" onClick={getUsers}>
 
-        <button
-        className="open-button success mr-3"
-        onClick={logout}
-        >Log Out
-        </button>
+                <Dropdown.Toggle className="open-button" variant="success" id="dropdown-custom-components">
+                    Chat
+                </Dropdown.Toggle>
+
+
+                <Dropdown.Menu as={CustomMenu}>
+                    {users.map(result => (
+                        <Dropdown.Item key={result._id} onClick={openForm}>{result.firstName} {result.lastName}</Dropdown.Item>
+                        ))}
+                </Dropdown.Menu>
+
+            </Dropdown>
+
+            <button
+            className="open-button success mr-3"
+            onClick={logout}
+            >Log Out
+            </button>
+
         </div>
 
     </nav>
