@@ -7,12 +7,10 @@ module.exports = {
     db.User.find(req.query)
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err))
-    // console.log(dbModel);
     // const id = req.body;
     // db.User.find(req.params.id)
     // .then(dbModel => res.json(dbModel))
     // .catch(err => res.status(422).json(err));
-    return
   },
   getUser: (req, res, next) => {
     console.log('=====getUser!======');

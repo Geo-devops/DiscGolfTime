@@ -5,7 +5,6 @@ import Dropdown from 'react-bootstrap/Dropdown'
 export default function Navbar( { users, setUsers }) {
 
     //AUTH route to get users and search/sort them. When you click on a user, then it opens the chatbox using openForm()
-    
 
     const openForm = () => {
         console.log('open clicked');
@@ -14,14 +13,17 @@ export default function Navbar( { users, setUsers }) {
 
     const getUsers = async e => {
         const users = await AUTH.findAllUsers()
+        console.log('users: ', users);
         let allUsers = users.data
-        // console.log('allUsers before delete: ', allUsers)
+        console.log('allUsers before delete: ', allUsers)
+        
         let i;
         for (i = 0; i < allUsers.length; i++) {
             if (allUsers[i]._id === localStorage.token.slice(10,34)) {
-                const key = allUsers[i]
-                allUsers.splice(key,1)
-                // console.log('allUsers after delete: ', allUsers)
+                console.log('We have a match! AllUsers[i]._id: ', allUsers[i].firstName + " localStorage: " + localStorage.token.slice(10,34))
+                allUsers.splice([i],1)
+            } else {
+                console.log('NO MATCH WAS FOUND', allUsers[i].firstName + " localStorage: " + localStorage.token.slice(10,34))
             }
         }
         setUsers(allUsers)
@@ -32,6 +34,8 @@ export default function Navbar( { users, setUsers }) {
         localStorage.clear();
         window.location.reload();
     }
+
+    // console.log(users);
 
     if (!users) {
 
@@ -60,6 +64,7 @@ export default function Navbar( { users, setUsers }) {
 } 
 else 
 {
+    
     return(
         <nav className="navbar navbar-light bg-light">
         <span className="navbar-brand mb-0 h1">Navbar gonna be so lit</span>
@@ -72,6 +77,7 @@ else
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
+                {console.log('INSIDE RETURN USERS: ', users)}
                 {users.map(result => (
                     <Dropdown.Item key={result._id} onClick={openForm} href="#/action-1">{result.firstName} {result.lastName}</Dropdown.Item>
                     ))}

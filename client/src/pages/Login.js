@@ -20,7 +20,7 @@ export default function Login ({ setToken }) {
                 password
             })
             setToken(token)
-            console.log(token);
+            // console.log(token);
         }
         catch(err) {
             console.log('Login error: ', err)

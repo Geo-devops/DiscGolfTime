@@ -19,6 +19,7 @@ export default function useToken() {
     const [token, setToken] = useState(getToken());
 
     const saveToken = (userToken) => {
+        console.log('USERTOKEN: ', userToken)
         const userTokenID = userToken.data.user._id
         // console.log('usertokenID: ', userTokenID)
         const objectToken = `{"token":"${userTokenID}"}`
