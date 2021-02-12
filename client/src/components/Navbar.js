@@ -89,7 +89,7 @@ export default function Navbar( { users, setUsers }) {
                 </Dropdown.Toggle>
                 <Dropdown.Menu as={CustomMenu}>
                     {users.map(result => (
-                        <Dropdown.Item key={result._id} onClick={openForm}>{result.firstName} {result.lastName}</Dropdown.Item>
+                        <Dropdown.Item key={result._id} onClick={openForm}>{result.username}</Dropdown.Item>
                         ))}
                 </Dropdown.Menu>
             </Dropdown>
