@@ -23,10 +23,7 @@ export default function Dashboard () {
 
 
     const [users, setUsers] = useState([])
-    // console.log('FROM DASHBOARD, users: ', users);
-
-    console.log('USERRRR: ', thisUser.firstName)
-
+    
     return(
         
         <div>

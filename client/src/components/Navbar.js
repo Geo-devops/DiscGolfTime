@@ -3,7 +3,7 @@ import AUTH from "../utils/AUTH";
 import Dropdown from 'react-bootstrap/Dropdown';
 import FormControl from 'react-bootstrap/FormControl';
 
-export default function Navbar( { users, setUsers }) {
+export default function Navbar( { users, setUsers, handleInputChange }) {
     
     const getUsers = async e => {
         const users = await AUTH.findAllUsers()
@@ -27,11 +27,6 @@ export default function Navbar( { users, setUsers }) {
     useEffect(() => {
         getUsers()
     }, [])
-
-
-    //AUTH route to get users and search/sort them. When you click on a user, then it opens the chatbox using openForm()
-
-    // Dropdown needs access to the DOM of the Menu to measure it
     
     const openForm = () => {
         console.log('open clicked');
@@ -47,7 +42,7 @@ export default function Navbar( { users, setUsers }) {
     const CustomMenu = React.forwardRef(
         ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
             const [value, setValue] = useState('');
-        
+
             return (
                 <div
                 ref={ref}
@@ -65,7 +60,9 @@ export default function Navbar( { users, setUsers }) {
                 <ul className="list-unstyled">
                     {React.Children.toArray(children).filter(
                     (child) =>
-                        !value || child.props.children.includes(value),
+                        // console.log(value),
+                        // console.log('CHILD.props.children: ', child.props.children),
+                        !value || child.props.children.includes(value)
                     )}
                 </ul>
                 </div>
