@@ -13,5 +13,10 @@ export default {
     findAllUsers: async function() {
         // console.log('findall');
         return axios.get("/auth/users/");
+    },
+    getOneUser: async function(user) {
+        console.log('From AUTH, user: ', user)
+        axios.get()
+        return axios.get(`/auth/user/${user}`);
     }
 };

@@ -5,15 +5,16 @@ export default function useToken() {
     const getToken = () => {
         // console.log('sessionStorage.length: ', sessionStorage.length);
         // Behold the code I'm most proud of ever. I wasn't able to use an optional chaining operator, so this resolved the issue:
-        if (localStorage.length === 0) {
-            return null
-        } else {
-        const tokenString = localStorage.getItem('token');
+        const  userToken2 = localStorage.length > 0 && JSON.parse(localStorage.getItem('token'))
+      //  if (localStorage.length === 0) {
+        //    return null
+        //} else {
+        //const tokenString = localStorage.getItem('token');
         // console.log('tokenString: ', tokenString)
-        const userToken = JSON.parse(tokenString);
+        //const userToken = JSON.parse(tokenString);
         // console.log('userToken ', userToken);
-        return userToken.token
-        }
+        return userToken2 ? userToken2.token : null
+        //}
     };
 
     const [token, setToken] = useState(getToken());

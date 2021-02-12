@@ -14,12 +14,18 @@ module.exports = {
   },
   getUser: (req, res, next) => {
     console.log('=====getUser!======');
-    // console.log('====res====: ', res);
     if (req.user) {
       return res.json({ user: req.user });
     } else {
       return res.json({ user: null });
     }
+  },
+  findById: function(req, res) {
+      console.log('====FINDBYID=====')
+      console.log('req.params', req.params)
+      db.User.findById(req.params.userId)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err))
   },
   register: (req, res) => {
     const { firstName, lastName, username, password } = req.body;
