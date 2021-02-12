@@ -15,8 +15,8 @@ export default {
         return axios.get("/auth/users/");
     },
     getOneUser: async function(user) {
-        console.log('From AUTH, user: ', user)
-        axios.get()
+        // console.log('From AUTH, user: ', user)
+        // axios.get()
         return axios.get(`/auth/user/${user}`);
     }
 };
