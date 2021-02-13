@@ -14,13 +14,18 @@ export default function Login ({ setToken }) {
 
         console.log("username is " + username)
         console.log("password is " + password);
-
-        const token = await AUTH.loginUser({
-          username,
-          password
-        })
-        setToken(token)
-        console.log(token);
+        try {
+            const token = await AUTH.loginUser({
+                username,
+                password
+            })
+            setToken(token)
+            // console.log(token);
+        }
+        catch(err) {
+            console.log('Login error: ', err)
+            alert ('Incorrect username or password')
+        }
     }
 
     return (
