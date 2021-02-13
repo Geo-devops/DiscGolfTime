@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Chatbox from "../components/ChatBox"
 import AUTH from "../utils/AUTH"
 
+
 function Signup() {
   const [firstname, setFirstname] = useState();
   const [lastname, setLastname] = useState();

@@ -3,6 +3,8 @@ import AUTH from "../utils/AUTH";
 import Login from "../pages/Login";
 import PropTypes from 'prop-types';
 
+
+
 export default function Signup({ setToken }) {
   
   const [firstname, setFirstname] = useState();
