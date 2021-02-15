@@ -22,9 +22,16 @@ module.exports = {
     },
     addMessage: function(req, res) {
         console.log("=======ADDMESSAGE=====")
-        const { user, chatPartner, message } = req.body;
-        db.Chat.findOneAndUpdate({ 'user': user, 'chatPartner': chatPartner }, {$push: {chats: message}})
+        const { user, chatPartner, thisChat } = req.body;
+        db.Chat.findOneAndUpdate({ 'user': user, 'chatPartner': chatPartner }, {$push: {chats: thisChat}})
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
+    },
+    getMessages: function(req, res) {
+        console.log("=====GETMESSAGES====")
+        const { user, chatPartner } = req.body;
+        db.Chat.findOne({ 'user': user, 'chatPartner': chatPartner })
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err))
     }
 }

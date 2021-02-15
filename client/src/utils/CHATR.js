@@ -8,5 +8,9 @@ export default {
     addMessage: function(chatData) {
         console.log('FROM CHATR: CHATDATA: ', chatData);
         return axios.post("/chat/addMessage", chatData)
+    },
+    getMessages: async function(chatData) {
+        console.log('FROM CHATR, GETMSGS, CHATDATA: ', chatData);
+        return axios.get('/chat/getMessages', chatData);
     }
 }

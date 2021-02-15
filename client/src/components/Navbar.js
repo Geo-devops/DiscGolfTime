@@ -31,7 +31,7 @@ export default function Navbar( { users, setUsers, thisUser }) {
 
     const [chatpartner, setChatpartner] = useState();
 
-    const openForm = (result) => {
+    const openForm = async (result) => {
         console.log('open clicked');
         console.log('OPENFORMRESULT: ', result)
         
@@ -43,6 +43,13 @@ export default function Navbar( { users, setUsers, thisUser }) {
         setChatpartner(result);
         
         document.getElementById("myForm").style.display = "block";
+
+        const messages = await CHATR.getMessages({
+            user: thisUser.username,
+            chatPartner: result
+        })
+        console.log('MESSAGES: ', messages)
+
     }
     // console.log('FROM NAVBAR, CHATPARTNER: ', chatpartner)
 

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+import CHATR from "../utils/CHATR";
 
-function MessageList() {
+
+function MessageList( {thisUser, chatpartner }) {
 
     const DUMMY_DATA = [
         {
@@ -14,6 +16,7 @@ function MessageList() {
             text: "I already know you"
         }
     ]
+
 
     return (
         <div className="card">

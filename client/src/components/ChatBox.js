@@ -15,7 +15,10 @@ export default function ChatBox( {thisUser, chatpartner } ) {
         CHATR.addMessage({
             user: thisUser.username,
             chatPartner: chatpartner,
-            message: message
+            thisChat: {
+                senderId: thisUser.username,
+                text: message
+            }
         })
 
         console.log('Message: ', message)
@@ -39,7 +42,10 @@ export default function ChatBox( {thisUser, chatpartner } ) {
 
                     <h1>Chat Test</h1>
                     
-                    <MessageList />
+                    <MessageList
+                    thisUser={thisUser}
+                    chatpartner={chatpartner}
+                    />
                 
                     <input
                     id="messageBox"
