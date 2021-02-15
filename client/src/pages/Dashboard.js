@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import UserNavbar from "../components/Navbar"
-import Chatbox from "../components/ChatBox";
 import AUTH from "../utils/AUTH"
+// import Chatbox from "../components/ChatBox";
 
 export default function Dashboard () {
 
@@ -13,9 +13,10 @@ export default function Dashboard () {
 
         // e.preventDefault()
         const user = await AUTH.getOneUser(thisUserID)
-        console.log('USER.data:', user.data);
+        // console.log('USER.data:', user.data);
         setThisUser(user.data)
     }
+    
 
     useEffect(() => {
         getUser()
@@ -30,12 +31,15 @@ export default function Dashboard () {
             <UserNavbar
             users={users}
             setUsers={setUsers}
+            thisUser ={thisUser}
             />
             <div className="m-4">
             Welcome user: <strong>
                 {thisUser.firstName} {thisUser.lastName}
                 </strong>
-            <Chatbox />
+            {/* <Chatbox
+            thisUser={thisUser}
+            /> */}
      
             </div>
         </div>

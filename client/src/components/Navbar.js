@@ -2,14 +2,16 @@ import React, {useState, useEffect } from "react";
 import AUTH from "../utils/AUTH";
 import Dropdown from 'react-bootstrap/Dropdown';
 import FormControl from 'react-bootstrap/FormControl';
+import CHATR from "../utils/CHATR";
+import ChatBox from "./ChatBox"
 
-export default function Navbar( { users, setUsers, handleInputChange }) {
-    
+export default function Navbar( { users, setUsers, thisUser }) {
+
     const getUsers = async e => {
         const users = await AUTH.findAllUsers()
-        console.log('users: ', users);
+        // console.log('users: ', users);
         let allUsers = users.data
-        console.log('allUsers before delete: ', allUsers)
+        // console.log('allUsers before delete: ', allUsers)
         
         let i;
         for (i = 0; i < allUsers.length; i++) {
@@ -21,17 +23,28 @@ export default function Navbar( { users, setUsers, handleInputChange }) {
             }
         }
         setUsers(allUsers)
-
     }
 
     useEffect(() => {
         getUsers()
     }, [])
-    
-    const openForm = () => {
+
+    const [chatpartner, setChatpartner] = useState();
+
+    const openForm = (result) => {
         console.log('open clicked');
+        console.log('OPENFORMRESULT: ', result)
+        
+        CHATR.newOrOpenChat({
+            user: thisUser.username,
+            chatPartner: result
+        })
+
+        setChatpartner(result);
+        
         document.getElementById("myForm").style.display = "block";
     }
+    // console.log('FROM NAVBAR, CHATPARTNER: ', chatpartner)
 
     const logout = () => {
         console.log('logout clicked');
@@ -78,15 +91,16 @@ export default function Navbar( { users, setUsers, handleInputChange }) {
         
         <div className="nav navbar-right">
             
-
-
-           < Dropdown className="mr-3" onClick={getUsers}>
+           <Dropdown className="mr-3" onClick={getUsers}>
                 <Dropdown.Toggle className="open-button" variant="success" id="dropdown-custom-components">
                     Chat
                 </Dropdown.Toggle>
                 <Dropdown.Menu as={CustomMenu}>
                     {users.map(result => (
-                        <Dropdown.Item key={result._id} onClick={openForm}>{result.username}</Dropdown.Item>
+                        <Dropdown.Item key={result._id}
+                        onClick={() => openForm(result.username)}
+                        >{result.username}
+                        </Dropdown.Item>
                         ))}
                 </Dropdown.Menu>
             </Dropdown>
@@ -96,11 +110,12 @@ export default function Navbar( { users, setUsers, handleInputChange }) {
             onClick={logout}
             >Log Out
             </button>
-
+        <ChatBox
+        thisUser={thisUser}
+        chatpartner={chatpartner}
+        />
         </div>
-
     </nav>
     )
-
 
 }

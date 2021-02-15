@@ -1,7 +1,8 @@
 import React from "react";
 import MessageList from "./MessageList";
+import CHATR from "../utils/CHATR";
 
-function ChatBox() {
+export default function ChatBox( {thisUser, chatpartner } ) {
 
     function closeForm() {
         console.log('close clicked');
@@ -11,6 +12,12 @@ function ChatBox() {
     function sendMessage(event) {
         event.preventDefault();
         const message = document.getElementById("messageBox").value;
+        CHATR.addMessage({
+            user: thisUser.username,
+            chatPartner: chatpartner,
+            message: message
+        })
+
         console.log('Message: ', message)
     }
 
@@ -33,7 +40,7 @@ function ChatBox() {
                     <h1>Chat Test</h1>
                     
                     <MessageList />
-
+                
                     <input
                     id="messageBox"
                     type="text"
@@ -53,5 +60,3 @@ function ChatBox() {
         </div>
     )
 }
-
-export default ChatBox;
