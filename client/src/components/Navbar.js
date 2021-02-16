@@ -6,7 +6,7 @@ import CHATR from "../utils/CHATR";
 import ChatBox from "./ChatBox"
 
 export default function Navbar( { users, setUsers, thisUser }) {
-
+    
     const getUsers = async e => {
         const users = await AUTH.findAllUsers()
         // console.log('users: ', users);
@@ -30,6 +30,7 @@ export default function Navbar( { users, setUsers, thisUser }) {
     }, [])
 
     const [chatpartner, setChatpartner] = useState();
+    const [messageList, setMessageList] = useState();
 
     const openForm = async (result) => {
         console.log('open clicked');
@@ -48,10 +49,10 @@ export default function Navbar( { users, setUsers, thisUser }) {
             user: thisUser.username,
             chatPartner: result
         })
-        console.log('MESSAGES: ', messages)
+        console.log('MESSAGES.data.chats: ', messages.data.chats)
+        setMessageList(messages.data.chats)
 
     }
-    // console.log('FROM NAVBAR, CHATPARTNER: ', chatpartner)
 
     const logout = () => {
         console.log('logout clicked');
@@ -120,6 +121,7 @@ export default function Navbar( { users, setUsers, thisUser }) {
         <ChatBox
         thisUser={thisUser}
         chatpartner={chatpartner}
+        messageList={messageList}
         />
         </div>
     </nav>

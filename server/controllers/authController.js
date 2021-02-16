@@ -47,6 +47,9 @@ module.exports = {
         return res.json(savedUser);
       });
     });
+    // db.User.create(req.body)
+    // .then(dbUser => res.json(dbUser))
+    // .catch(err => res.status(422).json(err))
   },
   logout: (req, res) => {
     if (req.user) {

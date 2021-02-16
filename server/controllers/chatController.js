@@ -29,9 +29,16 @@ module.exports = {
     },
     getMessages: function(req, res) {
         console.log("=====GETMESSAGES====")
-        const { user, chatPartner } = req.body;
-        db.Chat.findOne({ 'user': user, 'chatPartner': chatPartner })
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err))
+        const usableData = req.params.userchatPartner
+        const actuallyusableData = JSON.parse(usableData)
+        // console.log('actuallyuabledata.user: ', actuallyusableData.user)
+        
+        db.Chat.findOne({ user: actuallyusableData.user, chatPartner: actuallyusableData.chatPartner }, function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(result);
+            }
+        });
     }
 }

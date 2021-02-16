@@ -1,28 +1,21 @@
-import React, { useEffect } from "react";
-import CHATR from "../utils/CHATR";
+import React, { useState, useEffect } from "react";
 
 
-function MessageList( {thisUser, chatpartner }) {
+function MessageList( {messageList, messageList2 }) {
 
-    const DUMMY_DATA = [
-        {
-            id: 1,
-            senderId: "apnordin",
-            text: "Hello! Nice to meet you"
-        },
-        {
-            id: 2,
-            senderId: "pdnarmi",
-            text: "I already know you"
-        }
-    ]
+    console.log('MESSAGE LIST FROM ML: ', messageList);
 
+    if (messageList === undefined ) {
+        return (
+            <div className="card"></div>
+        )
+    } else if (!messageList2) {
 
-    return (
-        <div className="card">
+        return (
+            <div className="card">
             <div className="message-list">
-                {DUMMY_DATA.map(message => (
-                    <div key={message.id} className="message">
+                {messageList.map(message => (
+                    <div className="message">
                         <div className="senderId">
                         {message.senderId}
                         </div>
@@ -34,7 +27,26 @@ function MessageList( {thisUser, chatpartner }) {
             </div>
         </div>
     )
-
+    
+    } else {
+        
+        return (
+            <div className="card">
+            <div className="message-list">
+                {messageList2.map(message => (
+                    <div className="message">
+                        <div className="senderId">
+                        {message.senderId}
+                        </div>
+                        <div className="messageContent rounded d-inline-flex pr-1 pl-1">
+                        {message.text}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    )
+    }
 }
 
 export default MessageList;
