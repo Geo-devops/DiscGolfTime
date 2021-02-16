@@ -5,9 +5,15 @@ export default {
         // console.log('from CHATR: neworopenchat, CHATDATA: ', chatData);
         return axios.post("/chat/newOrOpenChat", chatData);
     },
+    newOrOpenChatInvert: function(chatData) {
+        return axios.post("/chat/newOrOpenChatInvert", chatData);
+    },
     addMessage: function(chatData) {
         // console.log('FROM CHATR: CHATDATA: ', chatData);
         return axios.post("/chat/addMessage", chatData)
+    },
+    addMessageInvert: function(chatData) {
+        return axios.post("/chat/addMessageInvert", chatData)
     },
     getMessages: async function(chatData) {
         // console.log('FROM CHATR, GETMSGS, CHATDATA: ', chatData);

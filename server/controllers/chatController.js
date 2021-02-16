@@ -18,10 +18,35 @@ module.exports = {
                 if (err) return res.json(err);
                 return res.json(savedChat);
             })
-        });
+        })
+    },
+    newOrOpenChatInvert: function(req, res) {
+        console.log("===NEWCHATINVERT===")
+        const { user, chatPartner } = req.body;
+        db.Chat.findOne({ 'user': chatPartner, 'chatPartner': user }, (err, chatMatch) => {
+            if(chatMatch) {
+                console.log('THIS CHAT ALREADY EXISTS, KEEP ADDING')
+                return;
+            }
+            const newChat1 = new db.Chat({
+                'user': chatPartner,
+                'chatPartner': user
+            });
+            newChat1.save((err, savedChat) => {
+                if (err) return res.json(err);
+                return res.json(savedChat);
+            })
+        })
     },
     addMessage: function(req, res) {
         console.log("=======ADDMESSAGE=====")
+        const { user, chatPartner, thisChat } = req.body;
+        db.Chat.findOneAndUpdate({ 'user': user, 'chatPartner': chatPartner }, {$push: {chats: thisChat}})
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
+    addMessageInvert: function(req, res) {
+        console.log("====ADDMESSAGEINVERT===")
         const { user, chatPartner, thisChat } = req.body;
         db.Chat.findOneAndUpdate({ 'user': user, 'chatPartner': chatPartner }, {$push: {chats: thisChat}})
         .then(dbModel => res.json(dbModel))

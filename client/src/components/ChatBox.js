@@ -36,6 +36,15 @@ export default function ChatBox( {thisUser, chatpartner, messageList } ) {
             }
         })
 
+        CHATR.addMessageInvert({
+            user: chatpartner,
+            chatPartner: thisUser.username,
+            thisChat: {
+                senderId: thisUser.username,
+                text: message
+            }
+        })
+
         console.log('Message: ', message)
     }
 

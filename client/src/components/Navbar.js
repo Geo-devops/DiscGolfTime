@@ -41,6 +41,11 @@ export default function Navbar( { users, setUsers, thisUser }) {
             chatPartner: result
         })
 
+        CHATR.newOrOpenChatInvert({
+            user: thisUser.username,
+            chatPartner: result
+        })
+
         setChatpartner(result);
         
         document.getElementById("myForm").style.display = "block";
