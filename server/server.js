@@ -18,6 +18,11 @@ app.use(express.json());
 app.use('/', express.static(path.join(__dirname, '../client/build')));
 app.use(cors());
 
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 //Cors for login token
 app.use('/login', (req, res) => {
   res.send({
@@ -53,6 +58,9 @@ app.use(function(err, req, res, next) {
 	console.error(err.stack);
 	res.status(500);
 })
+
+// Connect to the Mongo DB
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/discgolftime");
 
 app.listen(PORT, () => {
 	console.log(`App listening on PORT: ${PORT}`);
