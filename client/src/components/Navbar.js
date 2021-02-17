@@ -6,8 +6,16 @@ import CHATR from "../utils/CHATR";
 import ChatBox from "./ChatBox"
 
 export default function Navbar( { users, setUsers, thisUser }) {
+    // console.log('THISUSER: ', thisUser.username)
+
+    const thisUserName = thisUser.username
+
+    const [chatpartner, setChatpartner] = useState();
+    const [messageList, setMessageList] = useState();
     
+
     const getUsers = async e => {
+
         const users = await AUTH.findAllUsers()
         // console.log('users: ', users);
         let allUsers = users.data
@@ -25,17 +33,20 @@ export default function Navbar( { users, setUsers, thisUser }) {
         setUsers(allUsers)
     }
 
+    const getMessages = async e => {
+        const messages = await CHATR.getMessages(
+            {
+            user: thisUserName,
+        })
+
+        setMessageList(messages.data)
+    }
+
     useEffect(() => {
         getUsers()
     }, [])
 
-    const [chatpartner, setChatpartner] = useState();
-    const [messageList, setMessageList] = useState();
-
     const openForm = async (result) => {
-        console.log('open clicked');
-        console.log('OPENFORMRESULT: ', result)
-        
         CHATR.newOrOpenChat({
             user: thisUser.username,
             chatPartner: result
@@ -45,18 +56,9 @@ export default function Navbar( { users, setUsers, thisUser }) {
             user: thisUser.username,
             chatPartner: result
         })
-
         setChatpartner(result);
-        
+
         document.getElementById("myForm").style.display = "block";
-
-        const messages = await CHATR.getMessages({
-            user: thisUser.username,
-            chatPartner: result
-        })
-        console.log('MESSAGES.data.chats: ', messages.data.chats)
-        setMessageList(messages.data.chats)
-
     }
 
     const logout = () => {
@@ -104,8 +106,13 @@ export default function Navbar( { users, setUsers, thisUser }) {
         
         <div className="nav navbar-right">
             
-           <Dropdown className="mr-3" onClick={getUsers}>
-                <Dropdown.Toggle className="open-button" variant="success" id="dropdown-custom-components">
+           <Dropdown className="mr-3" onClick={getMessages}>
+                <Dropdown.Toggle
+                    // onClick={getMessages}
+                    className="open-button"
+                    variant="success"
+                    id="dropdown-custom-components"
+                    >
                     Chat
                 </Dropdown.Toggle>
                 <Dropdown.Menu as={CustomMenu}>

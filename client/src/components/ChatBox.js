@@ -1,22 +1,19 @@
-import React, {useState, useEffect} from "react";
+import React, { useState } from "react";
 import MessageList from "./MessageList";
 import CHATR from "../utils/CHATR";
 
 export default function ChatBox( {thisUser, chatpartner, messageList } ) {
 
+    const thisUserName = thisUser.username
+
     const [messageList2, setMessageList2] = useState();
 
-    const refresh = async () => {
+    const refresh = async e => {
         console.log('refresh clicked!');
-        console.log('THISUSER: ', thisUser.username)
-        console.log('CHATPARTNER: ', chatpartner)
         const messages = await CHATR.getMessages({
-            user: thisUser.username,
-            chatPartner: chatpartner
+            user: thisUserName
         })
-        console.log('MESSAGES: ', messages)
-        console.log('MESSAGES.data.chats: ', messages.data.chats)
-        setMessageList2(messages.data.chats)
+        setMessageList2(messages.data)
     }
 
     function closeForm() {
@@ -46,12 +43,14 @@ export default function ChatBox( {thisUser, chatpartner, messageList } ) {
         })
 
         console.log('Message: ', message)
+        document.getElementById("messageBox").value = '';
+        refresh();
     }
 
     return (
         <div>
           
-            <div className="form-popup" id="myForm">
+            <div className="form-popup chatbox" id="myForm">
 
                 <form className="form-container">
                     <button
@@ -71,7 +70,7 @@ export default function ChatBox( {thisUser, chatpartner, messageList } ) {
                     <span aria-hidden="true">&times;</span>
                     </button>
 
-                    <h1>Chat Test</h1>
+                    <h5 className="mb-2">Chatting With: {chatpartner}</h5>
                     
                     <MessageList
                     thisUser={thisUser}

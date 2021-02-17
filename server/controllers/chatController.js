@@ -6,7 +6,7 @@ module.exports = {
         const { user, chatPartner } = req.body;
         db.Chat.findOne({ 'user': user, 'chatPartner': chatPartner }, (err, chatMatch) => {
             if(chatMatch) {
-                console.log('THIS CHAT ALREADY EXISTS, KEEP ADDING TO IT')
+                // console.log('THIS CHAT ALREADY EXISTS, KEEP ADDING TO IT')
                 // ADD CODE TO KEEP ADDING TO THIS
                 return;
             }
@@ -25,7 +25,7 @@ module.exports = {
         const { user, chatPartner } = req.body;
         db.Chat.findOne({ 'user': chatPartner, 'chatPartner': user }, (err, chatMatch) => {
             if(chatMatch) {
-                console.log('THIS CHAT ALREADY EXISTS, KEEP ADDING')
+                // console.log('THIS CHAT ALREADY EXISTS, KEEP ADDING')
                 return;
             }
             const newChat1 = new db.Chat({
@@ -54,11 +54,20 @@ module.exports = {
     },
     getMessages: function(req, res) {
         console.log("=====GETMESSAGES====")
-        const usableData = req.params.userchatPartner
+        const usableData = req.params.user
+        console.log('USABLE DATA:', usableData);
         const actuallyusableData = JSON.parse(usableData)
-        // console.log('actuallyuabledata.user: ', actuallyusableData.user)
+        console.log('actuallyusabledata: ', actuallyusableData)
         
-        db.Chat.findOne({ user: actuallyusableData.user, chatPartner: actuallyusableData.chatPartner }, function (err, result) {
+        // db.Chat.findOne({ user: actuallyusableData.user, chatPartner: actuallyusableData.chatPartner }, function (err, result) {
+        //     if (err) {
+        //         res.send(err);
+        //     } else {
+        //         res.send(result);
+        //     }
+        // });
+
+        db.Chat.find({ user: actuallyusableData.user}, function (err, result) {
             if (err) {
                 res.send(err);
             } else {
