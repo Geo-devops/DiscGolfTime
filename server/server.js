@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require("cors");
 const morgan = require('morgan');
 const session = require('express-session');
+const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
 const dbConnection = require('./config/connection');
 const passport = require('./config/passport');
