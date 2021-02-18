@@ -3,7 +3,7 @@ const db = require("../models");
 // Defining methods for the userController
 module.exports = {
   findAll: function(req, res) {
-    console.log('=====All====')
+    // console.log('=====All====')
     db.User.find(req.query)
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err))
@@ -13,7 +13,7 @@ module.exports = {
     // .catch(err => res.status(422).json(err));
   },
   getUser: (req, res, next) => {
-    console.log('=====getUser!======');
+    // console.log('=====getUser!======');
     if (req.user) {
       return res.json({ user: req.user });
     } else {
