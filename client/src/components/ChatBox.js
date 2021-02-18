@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MessageList from "./MessageList";
 import CHATR from "../utils/CHATR";
 
@@ -9,12 +9,24 @@ export default function ChatBox( {thisUser, chatpartner, messageList } ) {
     const [messageList2, setMessageList2] = useState();
 
     const refresh = async e => {
-        console.log('refresh clicked!');
-        const messages = await CHATR.getMessages({
-            user: thisUserName
-        })
-        setMessageList2(messages.data)
+        if (chatpartner !== undefined) {
+            // console.log('refresh clicked!');
+            const messages = await CHATR.getMessages({
+                user: thisUserName
+            })
+            setMessageList2(messages.data)
+        } else {
+            return
+            // console.log('TRIED TO REFRESH, BUT NO CHATPARTNER')
+        }
     }
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+          refresh()
+        }, 1000);
+        return () => clearInterval(interval);
+      }, [chatpartner]);
 
     function closeForm() {
         console.log('close clicked');
@@ -53,13 +65,6 @@ export default function ChatBox( {thisUser, chatpartner, messageList } ) {
             <div className="form-popup chatbox" id="myForm">
 
                 <form className="form-container">
-                    <button
-                    type="button"
-                    className="open-button"
-                    onClick={refresh}
-                    >
-                    <span aria-hidden="true">Refresh</span>
-                    </button>
 
                     <button
                     type="button"
@@ -70,7 +75,7 @@ export default function ChatBox( {thisUser, chatpartner, messageList } ) {
                     <span aria-hidden="true">&times;</span>
                     </button>
 
-                    <h5 className="mb-2">Chatting With: {chatpartner}</h5>
+                    <h5 className="mb-2 mt-2 ml-1">Chatting With: {chatpartner}</h5>
                     
                     <MessageList
                     thisUser={thisUser}
