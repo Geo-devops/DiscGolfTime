@@ -16,14 +16,13 @@ function App() {
   }
 
   return (
+    
     <Router>
       <div>
         <Wrapper>
-          
           <Route exact path="/login" component={Login} />
           <Route exact path ="/" component={Dashboard} />
         </Wrapper>
-        
       </div>
     </Router>
   );

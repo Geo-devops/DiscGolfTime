@@ -2,14 +2,24 @@ import React, {useState, useEffect } from "react";
 import AUTH from "../utils/AUTH";
 import Dropdown from 'react-bootstrap/Dropdown';
 import FormControl from 'react-bootstrap/FormControl';
+import CHATR from "../utils/CHATR";
+import ChatBox from "./ChatBox"
 
-export default function Navbar( { users, setUsers, handleInputChange }) {
+export default function Navbar( { users, setUsers, thisUser }) {
+    // console.log('THISUSER: ', thisUser.username)
+
+    const thisUserName = thisUser.username
+
+    const [chatpartner, setChatpartner] = useState();
+    const [messageList, setMessageList] = useState();
     
+
     const getUsers = async e => {
+
         const users = await AUTH.findAllUsers()
-        console.log('users: ', users);
+        // console.log('users: ', users);
         let allUsers = users.data
-        console.log('allUsers before delete: ', allUsers)
+        // console.log('allUsers before delete: ', allUsers)
         
         let i;
         for (i = 0; i < allUsers.length; i++) {
@@ -21,15 +31,33 @@ export default function Navbar( { users, setUsers, handleInputChange }) {
             }
         }
         setUsers(allUsers)
+    }
 
+    const getMessages = async e => {
+        const messages = await CHATR.getMessages(
+            {
+            user: thisUserName,
+        })
+
+        setMessageList(messages.data)
     }
 
     useEffect(() => {
         getUsers()
     }, [])
-    
-    const openForm = () => {
-        console.log('open clicked');
+
+    const openForm = async (result) => {
+        CHATR.newOrOpenChat({
+            user: thisUser.username,
+            chatPartner: result
+        })
+
+        CHATR.newOrOpenChatInvert({
+            user: thisUser.username,
+            chatPartner: result
+        })
+        setChatpartner(result);
+
         document.getElementById("myForm").style.display = "block";
     }
 
@@ -78,15 +106,21 @@ export default function Navbar( { users, setUsers, handleInputChange }) {
         
         <div className="nav navbar-right">
             
-
-
-           < Dropdown className="mr-3" onClick={getUsers}>
-                <Dropdown.Toggle className="open-button" variant="success" id="dropdown-custom-components">
+           <Dropdown className="mr-3" onClick={getMessages}>
+                <Dropdown.Toggle
+                    // onClick={getMessages}
+                    className="open-button"
+                    variant="success"
+                    id="dropdown-custom-components"
+                    >
                     Chat
                 </Dropdown.Toggle>
                 <Dropdown.Menu as={CustomMenu}>
                     {users.map(result => (
-                        <Dropdown.Item key={result._id} onClick={openForm}>{result.username}</Dropdown.Item>
+                        <Dropdown.Item key={result._id}
+                        onClick={() => openForm(result.username)}
+                        >{result.username}
+                        </Dropdown.Item>
                         ))}
                 </Dropdown.Menu>
             </Dropdown>
@@ -96,11 +130,13 @@ export default function Navbar( { users, setUsers, handleInputChange }) {
             onClick={logout}
             >Log Out
             </button>
-
+        <ChatBox
+        thisUser={thisUser}
+        chatpartner={chatpartner}
+        messageList={messageList}
+        />
         </div>
-
     </nav>
     )
-
 
 }
