@@ -110,5 +110,11 @@ code {
 
 .message-list {
   max-height: 250px;
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+
+.searchResultList {
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }

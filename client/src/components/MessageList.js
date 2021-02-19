@@ -30,17 +30,8 @@ function MessageList( {messageList, messageList2, chatpartner }) {
 
     const messageListBox = document.getElementById("messageListBox");
     if (messageListBox) {
-        // console.log('HEIGHT: ', messageListBox.scrollHeight)
         messageListBox.scrollTop = messageListBox.scrollHeight;
     }
-
-    // if (messageList === undefined && messageList2 === undefined ) {
-    //     // console.log('BOTH are undefined')
-    //     return (
-    //         <div className="card"></div>
-    //     )
-    // } else if (messageList2 === undefined && messageList) {
-    //     // console.log('using messagelist1')
 
     if (partneredMessageList) {
 

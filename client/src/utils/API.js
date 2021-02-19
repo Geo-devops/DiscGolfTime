@@ -2,7 +2,8 @@
 import axios from "axios";
 
 export default {
-    signUpUser: function(userData) {
-        return axios.post("/api/signup", userData);
+
+    getAllCourses: async function() {
+        return axios.get("/api/courses/");
     }
 };
