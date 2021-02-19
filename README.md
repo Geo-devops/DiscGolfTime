@@ -21,6 +21,7 @@ As a user, I want to be able to post where and when I will be playing disc golf,
 self-made
 
 **Team**
+
 Thank you to the following people who contributed to this project: <br>
 
 - [Alex Nordin](https://github.com/apnordin)
