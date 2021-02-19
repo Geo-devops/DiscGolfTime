@@ -4,7 +4,7 @@
 
 ## Heroku Link
 
-https://git.heroku.com/discgolftime.git
+https://discgolftime.herokuapp.com/
 
 ## Index
 
