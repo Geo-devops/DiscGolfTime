@@ -28,19 +28,10 @@ function MessageList( {messageList, messageList2, chatpartner }) {
         getMessagesForUser()
     })
 
-    // const messageListBox = document.getElementById("messageListBox");
-    // if (messageListBox) {
-    //     // console.log('HEIGHT: ', messageListBox.scrollHeight)
-    //     messageListBox.scrollTop = messageListBox.scrollHeight;
-    // }
-
-    // if (messageList === undefined && messageList2 === undefined ) {
-    //     // console.log('BOTH are undefined')
-    //     return (
-    //         <div className="card"></div>
-    //     )
-    // } else if (messageList2 === undefined && messageList) {
-    //     // console.log('using messagelist1')
+    const messageListBox = document.getElementById("messageListBox");
+    if (messageListBox) {
+        messageListBox.scrollTop = messageListBox.scrollHeight;
+    }
 
     if (partneredMessageList) {
 
@@ -66,26 +57,6 @@ function MessageList( {messageList, messageList2, chatpartner }) {
     )
 }
 
-    
-    // } else if (messageList2) {
-    //     // console.log('using messagelist2')
-    //     return (
-    //     <div className="card mList">
-    //         <div className="message-list" id="messageListBox">
-    //             {messageList2.map(message => (
-    //                 <div className="message">
-    //                     <div className="senderId">
-    //                     {message.senderId}
-    //                     </div>
-    //                     <div className="messageContent rounded d-inline-flex pr-1 pl-1">
-    //                     {message.text}
-    //                     </div>
-    //                 </div>
-    //             ))}
-    //         </div>
-    //     </div>
-    // )
-    // }
 }
 
 export default MessageList;

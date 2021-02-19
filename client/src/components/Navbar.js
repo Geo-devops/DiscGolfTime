@@ -102,8 +102,6 @@ export default function Navbar( { users, setUsers, thisUser }) {
     return(
         <nav className="navbar navbar-light bg-light">
         <span className="navbar-brand mb-0 h1">Navbar gonna be so lit</span>
-
-        
         <div className="nav navbar-right">
             
            <Dropdown className="mr-3" onClick={getMessages}>

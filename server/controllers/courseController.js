@@ -3,6 +3,7 @@ const db = require("../models");
 // Defining methods for the courseController
 module.exports = {
   findAll: function(req, res) {
+    console.log('FINDALLCOURSES===')
     db.Course
       .find(req.query)
       .sort({ date: -1 })

@@ -1,47 +1,55 @@
-import React, { useState, useEffect } from "react";
-import UserNavbar from "../components/Navbar"
-import AUTH from "../utils/AUTH"
-// import Chatbox from "../components/ChatBox";
+// import React, { useState, useEffect } from "react";
+// import { BrowserRouter as Router, Route } from "react-router-dom";
+// import UserNavbar from "../components/Navbar"
+// import AUTH from "../utils/AUTH"
+// import SearchMap from "../components/SearchMap"
+// import CoursePage from "../components/CoursePage";
 
-export default function Dashboard () {
+// import Wrapper from "../components/Wrapper";
 
-    const [thisUser, setThisUser] = useState([])
+// // import Search from "../components/Search"
+// // import Map from "../components/Map"
+// // import Chatbox from "../components/ChatBox";
 
-    const getUser = async e => {
-        const thisUserID = localStorage.token.slice(10,34)
-        // console.log('ThisUserID: ', thisUserID)
+// export default function Dashboard () {
 
-        // e.preventDefault()
-        const user = await AUTH.getOneUser(thisUserID)
-        // console.log('USER.data:', user.data);
-        setThisUser(user.data)
-    }
+//     const [thisUser, setThisUser] = useState([])
+
+//     const getUser = async e => {
+//         const thisUserID = localStorage.token.slice(10,34)
+//         // console.log('ThisUserID: ', thisUserID)
+
+//         // e.preventDefault()
+//         const user = await AUTH.getOneUser(thisUserID)
+//         // console.log('USER.data:', user.data);
+//         setThisUser(user.data)
+//     }
     
 
-    useEffect(() => {
-        getUser()
-    }, [])
+//     useEffect(() => {
+//         getUser()
+//     }, [])
 
 
-    const [users, setUsers] = useState([])
+//     const [users, setUsers] = useState([])
     
-    return(
+//     return(
         
-        <div>
-            <UserNavbar
-            users={users}
-            setUsers={setUsers}
-            thisUser ={thisUser}
-            />
-            <div className="m-4">
-            Welcome user: <strong>
-                {thisUser.firstName} {thisUser.lastName}
-                </strong>
-            {/* <Chatbox
-            thisUser={thisUser}
-            /> */}
-     
-            </div>
-        </div>
-    )
-}
+//         <div>
+//             <UserNavbar
+//             users={users}
+//             setUsers={setUsers}
+//             thisUser ={thisUser}
+//             />
+//             <Router>
+//                 <div className = "container">
+//                     <Wrapper>
+//                    {/*  <Route path='/searchmap' component={SearchMap} />
+//                     <Route path="/course" component={CoursePage} /> 
+//                     {/* <CoursePage.js /> */}
+//                     </Wrapper>
+//                 </div>
+//             </Router>
+//         </div>
+//     )
+// }
