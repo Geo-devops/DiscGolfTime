@@ -23,7 +23,7 @@ export default function Search () {
         for (let i = 0; i < allCourses.length; i++) {
             const lowerCaseCourseNames = allCourses[i].name.toLowerCase();
             // console.log(lowerCaseCourseNames)
-            if (lowerCaseCourseNames === (searchValue.toLowerCase())) {
+            if (lowerCaseCourseNames.includes(searchValue)) {
                 // console.log('We have an inclusion match: ', allCourses[i].name);
                 // console.log(allCourses[i])
                 results.push(allCourses[i])
