@@ -5,6 +5,7 @@ export default function useToken() {
     const getToken = () => {
         // console.log('sessionStorage.length: ', sessionStorage.length);
         // Behold the code I'm most proud of ever. I wasn't able to use an optional chaining operator, so this resolved the issue:
+<<<<<<< HEAD
         if (localStorage.length === 0) {
             return null
         } else {
@@ -14,11 +15,27 @@ export default function useToken() {
         // console.log('userToken ', userToken);
         return userToken.token
         }
+=======
+        const  userToken2 = localStorage.length > 0 && JSON.parse(localStorage.getItem('token'))
+      //  if (localStorage.length === 0) {
+        //    return null
+        //} else {
+        //const tokenString = localStorage.getItem('token');
+        // console.log('tokenString: ', tokenString)
+        //const userToken = JSON.parse(tokenString);
+        // console.log('userToken ', userToken);
+        return userToken2 ? userToken2.token : null
+        //}
+>>>>>>> main
     };
 
     const [token, setToken] = useState(getToken());
 
     const saveToken = (userToken) => {
+<<<<<<< HEAD
+=======
+        console.log('USERTOKEN: ', userToken)
+>>>>>>> main
         const userTokenID = userToken.data.user._id
         // console.log('usertokenID: ', userTokenID)
         const objectToken = `{"token":"${userTokenID}"}`

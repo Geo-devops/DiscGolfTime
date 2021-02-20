@@ -1,4 +1,8 @@
 module.exports = {
-  Book: require("./book"),
-  User: require("./user")
+  Course: require("./course"),
+  User: require("./user"),
+  // Book: require("./book"),
+  User: require("./user"),
+  Chat: require("./chat"),
+  Feed: require('./feed')
 };

@@ -107,3 +107,18 @@ code {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
 }
+
+.message-list {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.searchResultList {
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.postUser {
+  font-size: small;
+}

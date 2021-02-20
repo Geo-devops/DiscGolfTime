@@ -3,10 +3,20 @@ import AUTH from "../utils/AUTH";
 import Login from "../pages/Login";
 import PropTypes from 'prop-types';
 
+<<<<<<< HEAD
 
 
 export default function Signup({ setToken }) {
   
+=======
+<<<<<<<< HEAD:client/src/components/Signup.js
+export default function Signup({ setToken }) {
+  
+========
+
+function Signup() {
+>>>>>>>> main:client/src/pages/Signup.js
+>>>>>>> main
   const [firstname, setFirstname] = useState();
   const [lastname, setLastname] = useState();
   const [username, setUsername] = useState();
