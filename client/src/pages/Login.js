@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AUTH from "../utils/AUTH";
 import Signup from "../components/Signup"
 import PropTypes from 'prop-types';
-
+import logo from "../assets/logo.png"
 
 export default function Login ({ setToken }) {
 
@@ -31,7 +31,11 @@ export default function Login ({ setToken }) {
     return (
         <div>
             <div className="container">
-                <h1 className="text-center m-4">Welcome to Tee Time!</h1>
+                
+                <h1 className="text-center m-4"></h1>
+                
+                <img alt="logo" src={logo}/>
+                
                 <div className="row">
                     <div className="col-sm-6 px-5">
                         <div className="m-4 text-center">
