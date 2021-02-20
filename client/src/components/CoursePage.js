@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from "react";
+import { Jumbotron } from "react-bootstrap";
 import { useHistory } from 'react-router-dom'
 import UserNavbar from "../components/Navbar"
 import AUTH from "../utils/AUTH"
+import Map from "../components/Map/Map"
 
 export default function CoursePage({courseName}) {
 
@@ -25,8 +27,12 @@ export default function CoursePage({courseName}) {
 
     const history = useHistory()
     console.log('the selected course is ! ', history.location.state)
-    const { name } = history.location.state
-
+    const { name, difficulty } = history.location.state
+    const location = {
+        address: history.location.state.address,
+        lat: history.location.state.lat,
+        lng: history.location.state.lng
+    }
     return (
         <div>
             <UserNavbar
@@ -41,7 +47,14 @@ export default function CoursePage({courseName}) {
                 </h1>
             </div>
             <div className="col-4">Feed</div>
-            <div className="col-8">Course Information</div>
+            <div className="col-8">
+                <Jumbotron>
+                    <h6 style={{textAlign:"left"}}>Name: {name}</h6>
+                    <h6 style={{textAlign:"left"}}>Address: {location.address}</h6>
+                    <h6 styke={{textAlign:"left"}}>Difficulty: {difficulty}</h6>
+                    <Map location={location} zoomLevel={17}></Map>
+                </Jumbotron>
+            </div>
         </div>
         </div>
     )
