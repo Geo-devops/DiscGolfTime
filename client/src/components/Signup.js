@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AUTH from "../utils/AUTH";
 import Login from "../pages/Login";
 import PropTypes from 'prop-types';
-
+//  Signup function
 export default function Signup({ setToken }) {
   
   const [firstname, setFirstname] = useState();
