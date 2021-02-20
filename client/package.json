@@ -4,6 +4,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@iconify/icons-mdi": "^1.1.11",
+    "@iconify/react": "^1.1.4",
+    "google-map-react": "^2.1.9",
     "react": "^16.8.6",
     "react-bootstrap": "^1.4.3",
     "react-dom": "^16.8.6",

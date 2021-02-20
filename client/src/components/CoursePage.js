@@ -4,6 +4,8 @@ import UserNavbar from "../components/Navbar"
 import AUTH from "../utils/AUTH"
 import FEED from "../utils/FEED"
 import PostList from "../components/PostList"
+import Jumbotron from "../components/Jumbotron/Jumbotron"
+import Map from "../components/Map/Map"
 
 export default function CoursePage({courseName}) {
     
@@ -68,6 +70,12 @@ export default function CoursePage({courseName}) {
     console.log('the selected course is ! ', history)
     const { name, address, difficulty } = history.location.state
 
+    const location = {
+        address: history.location.state.address,
+        lng: history.location.state.lng,
+        lat: history.location.state.lat
+    }
+
     if (postList) {
         console.log('postlist: ', postList)
     }
@@ -114,11 +122,15 @@ export default function CoursePage({courseName}) {
 
             </div>
             <div className="col-8">
+                <Jumbotron>
                 <h3>Course Information</h3>
                 <div className="courseInfo">
                     {address}
                     <p>Difficulty: {difficulty}</p>
                 </div>
+                <Map location={location} zoomLevel={17}/>
+                </Jumbotron>
+                
             </div>
         </div>
         </div>
