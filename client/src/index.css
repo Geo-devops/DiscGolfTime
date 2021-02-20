@@ -118,3 +118,7 @@ code {
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+.postUser {
+  font-size: small;
+}

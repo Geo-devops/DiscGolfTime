@@ -32,6 +32,8 @@ export default function SearchMap () {
             setUsers={setUsers}
             thisUser ={thisUser}
             />
+            <div className="container">
+
         <div className = "row mt-3">
             <div className = "col-12 mb-3">
                 <h1 className="text-center">
@@ -46,6 +48,7 @@ export default function SearchMap () {
             </div>
         </div>
         </div>
+            </div>
     )
 
 }

@@ -3,5 +3,6 @@ module.exports = {
   User: require("./user"),
   // Book: require("./book"),
   User: require("./user"),
-  Chat: require("./chat")
+  Chat: require("./chat"),
+  Feed: require('./feed')
 };

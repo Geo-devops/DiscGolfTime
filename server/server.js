@@ -49,6 +49,7 @@ app.get('/', (req, res) => {
 app.use('/auth', require('./routes/authRoutes'));
 app.use('/api', require('./routes/apiRoutes'));
 app.use('/chat', require('./routes/chatRoutes'));
+app.use('/feed', require('./routes/feedRoutes'));
 
 // If no routes are hit, send the React app
 app.use(function(req, res) {
