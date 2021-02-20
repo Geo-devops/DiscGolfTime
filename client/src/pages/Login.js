@@ -31,7 +31,7 @@ export default function Login ({ setToken }) {
     return (
         <div>
             <div className="container">
-                <h1 className="text-center m-4">Welcome to Tee Time!</h1>
+                <h1 className="text-center m-4">Welcome to Tee Time! Test 12</h1>
                 <div className="row">
                     <div className="col-sm-6 px-5">
                         <div className="m-4 text-center">
