@@ -4,12 +4,19 @@ export default function PostList ({ postList }) {
 
     console.log('POSTLIST: ', postList);
 
+    
+    const postListBox = document.getElementById("postListBox");
+    if (postListBox) {
+        postListBox.scrollTop = postListBox.scrollHeight;
+    }
+
+
     if (postList) {
 
         return (
-            <div className = "postList mt-5">
+            <div className = "postList mt-2" id="postListBox">
                 {postList.map(post => (
-                    <div className="post my-3">
+                    <div className="post my-2">
                         <div className="postUser">
                             {post.user}:
                         </div>

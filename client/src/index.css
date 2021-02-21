@@ -17,7 +17,7 @@ code {
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
-  background-color: #120558;
+  background-color: #383f57;
   padding: 10px 10px;
   border: none;
   cursor: pointer;
@@ -31,20 +31,28 @@ code {
 
 /* The popup form - hidden by default */
 .form-popup {
-  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  background-color: #2a2e3d;
   display: none;
+  border-radius: 10px;
   position: fixed;
+  width: 250px;
   bottom: 0;
   right: 15px;
   border: 3px solid #f1f1f1;
   z-index: 9;
 }
 
-/* Add styles to the form container */
-.form-container {
-  max-width: 300px;
-  padding: 10px;
-  background-color: rgb(255, 255, 255);
+.chattingWith {
+  font-weight: normal;
+  font-size: 18px;
+  color: white;
+}
+
+#messageBox {
+  border-radius: 5px;
+  background-color: rgb(250, 250, 250);
+  font-size: small;
 }
 
 /* Full-width input fields */
@@ -53,17 +61,17 @@ code {
   padding: 5px;
   margin: 10px 0 10px 0;
   border: none;
-  background: #e7e7e7;
+  background: #ffffff;
 }
 
 /* When the inputs get focus, do something */
 .form-container input[type="text"]:focus {
-  background-color: #ddd;
+  background-color: rgb(255, 255, 255);
   outline: none;
 }
 
 /* Set a style for the send button */
-.form-container .btn {
+/* .form-container .btn {
   color: white;
   padding: 10px 10px;
   border: none;
@@ -73,14 +81,24 @@ code {
 }
 
 .form-container .send {
-  background-color: #4caf50;
+  background-color: #383f57;
   float: right;
   width: 25%;
+} */
+
+.btn-send {
+  background-color: #45495e;
+  float: right;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+  opacity: 0.8;
+  border-radius: 5px;
 }
 
-/* Add some hover effects to buttons */
-.form-container .btn:hover,
-.open-button:hover {
+.btn-send:hover {
   opacity: 1;
 }
 
@@ -89,9 +107,10 @@ code {
 }
 
 .messageContent {
-  background-color: rgb(24, 132, 233);
+  background-color: rgb(70, 135, 219);
   color: white;
   font-size: smaller;
+  padding: 3px;
 }
 
 .message-list {
@@ -109,6 +128,7 @@ code {
 }
 
 .message-list {
+  background-color: rgb(250, 250, 250);
   max-height: 250px;
   overflow-y: auto;
 }
@@ -117,8 +137,101 @@ code {
   max-height: 500px;
   overflow-y: auto;
   overflow-x: hidden;
+  /* width: 300px; */
 }
 
 .postUser {
   font-size: small;
+}
+
+body {
+  background-color: #eff1f3;
+}
+
+.btn {
+  color: white;
+  opacity: 0.8;
+  background-color: #171f44;
+}
+
+.btn:hover {
+  color: white;
+  opacity: 1;
+}
+
+.searchResultItem {
+  background-color: #2b62b4;
+  color: white;
+  /* font-size: small; */
+  margin-top: 5px;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.navbar {
+  background-color: #383f57;
+}
+
+.btn-nav {
+  background-color: #383f57;
+}
+
+.btn-nav:hover {
+  background-color: #383f57;
+}
+
+.btn-nav:active {
+  background-color: #383f57;
+}
+
+.post {
+  background-color: rgb(70, 135, 219);
+  color: white;
+  font-size: smaller;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.postList {
+  background-color: white;
+  max-height: 460px;
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 10px;
+}
+
+.form-inline #postBox {
+  border-radius: 10px 0px 0px 10px;
+  padding: 10px;
+  width: 100%;
+  font-size: small;
+  width: 80%;
+}
+
+.postBtn {
+  font-size: small;
+  min-width: 50px;
+  width: 20%;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.postContent {
+  font-size: 12px;
+}
+
+.google-map {
+  width: 100%;
+  height: 375px;
+}
+
+.mainpagetext {
+  /* padding: 10px; */
+  /* font-weight: 400; */
+  color: rgb(66, 66, 66);
+  /* font-kerning: none; */
+}
+
+h1 {
+  color: rgb(56, 56, 56);
 }

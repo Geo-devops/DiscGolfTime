@@ -46,32 +46,32 @@ export default function Search () {
     if (!searchResults) {
 
         return (
-            <div>
+            <div className="d-flex justify-content-end">
                 <form onSubmit={courseSearch} className = "form-inline">
                     <div className="form-group">
                         <input type="search" className="form-control" id="courseSearchID" placeholder="Course Search" onChange={e => setSearchValue(e.target.value)}/>
                     </div>
-                    <button type="submit" className="btn btn-success ml-1">Search</button>
+                    <button type="submit" className="btn ml-1">Search</button>
                 </form>
             </div>
         );
     } else {
         return (
-            <div>
-                <form onSubmit={courseSearch} className = "form-inline">
+            <div className="float-right">
+                <form onSubmit={courseSearch} className = " form-inline">
                     <div className="form-group">
-                        <input type="search" className="form-control" id="courseSearchID" placeholder="Course Search" onChange={e => setSearchValue(e.target.value)}/>
+                        <input type="search" className=" form-control" id="courseSearchID" placeholder="Course Search" onChange={e => setSearchValue(e.target.value)}/>
                     </div>
-                    <button type="submit" className="btn btn-success ml-1">Search</button>
+                    <button type="submit" className="btn ml-1">Search</button>
                 </form>
-                <div className="searchResultList mt-2">
+                <div className="searchResultList mt-1">
                     {searchResults.map(result => (
                         <div className = "row ml-1" key={result._id}>
-                            <button onClick={() => handleClick(result)} className="searchResultItem btn">
+                            <div onClick={() => handleClick(result)} className="btn searchResultItem">
                                 <div className="courseName">
                                     {result.name}
                                 </div>
-                            </button>
+                            </div>
                         </div>
                     ))}
                 </div>

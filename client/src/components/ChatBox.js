@@ -75,7 +75,7 @@ export default function ChatBox( {thisUser, chatpartner, messageList } ) {
                     <span aria-hidden="true">&times;</span>
                     </button>
 
-                    <h5 className="mb-2 mt-2 ml-1">Chatting With: {chatpartner}</h5>
+                    <h5 className="mb-3 mt-2 ml-1 chattingWith">Chatting With: {chatpartner}</h5>
                     
                     <MessageList
                     thisUser={thisUser}
@@ -93,7 +93,7 @@ export default function ChatBox( {thisUser, chatpartner, messageList } ) {
 
                     <button
                     type="submit"
-                    className="btn send"
+                    className="btn-send"
                     onClick={sendMessage}
                     >Send
                     </button>
