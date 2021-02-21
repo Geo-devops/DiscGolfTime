@@ -100,15 +100,15 @@ export default function Navbar( { users, setUsers, thisUser }) {
     
     
     return(
-        <nav className="navbar navbar-light bg-light">
+        <nav className="navbar navdark">
         <span className="navbar-brand mb-0 h1"></span>
                 <div className="nav navbar-right">
             
            <Dropdown className="mr-3" onClick={getMessages}>
                 <Dropdown.Toggle
                     // onClick={getMessages}
-                    className="open-button"
-                    variant="success"
+                    className="open-button btn-nav"
+                    // variant="success"
                     id="dropdown-custom-components"
                     >
                     Chat
@@ -124,7 +124,7 @@ export default function Navbar( { users, setUsers, thisUser }) {
             </Dropdown>
 
             <button
-            className="open-button success mr-3"
+            className="open-button btn-nav mr-3"
             onClick={logout}
             >Log Out
             </button>

@@ -80,7 +80,6 @@ export default function CoursePage({courseName}) {
         console.log('postlist: ', postList)
     }
 
-
     return (
         <div>
             <UserNavbar
@@ -90,19 +89,21 @@ export default function CoursePage({courseName}) {
             />
             <div className="container">
 
-        <div className = "row mt-3">
-            <div className = "col-12 mb-4">
-                <h1 className="text-center">
-                    {name}
-                </h1>
-                <button className="btn btn-success" onClick={() => history.goBack()}>Return to Search</button>
+        <div className = "row mt-3 mb-4">
+            <div className = "col-8">
+                <h1>{name}</h1>
             </div>
             <div className="col-4">
-                <h3>Feed</h3>
-
-                <form className = "form-container">
+                <button className="mt-2 btn float-right" onClick={() => history.goBack()}>Return to Search</button>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col-4">
+                <h4>Feed</h4>
+                <div className="form-inline">
                     <input
                         id="postBox"
+                        className="form-control"
                         type="text"
                         placeholder="Type your post here"
                         name="post">
@@ -110,11 +111,11 @@ export default function CoursePage({courseName}) {
 
                     <button
                         type="submit"
-                        className="btn send"
+                        className="btn postBtn"
                         onClick={addPost}
-                        >Send
+                        >Post!
                     </button>
-                </form>
+                </div>
 
                 <PostList
                 postList = {postList}
@@ -125,7 +126,7 @@ export default function CoursePage({courseName}) {
                 <Jumbotron>
                 <h3>Course Information</h3>
                 <div className="courseInfo">
-                    {address}
+                    Address: {address}
                     <p>Difficulty: {difficulty}</p>
                 </div>
                 <Map location={location} zoomLevel={17}/>

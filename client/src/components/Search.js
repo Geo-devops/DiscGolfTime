@@ -51,7 +51,7 @@ export default function Search () {
                     <div className="form-group">
                         <input type="search" className="form-control" id="courseSearchID" placeholder="Course Search" onChange={e => setSearchValue(e.target.value)}/>
                     </div>
-                    <button type="submit" className="btn btn-success ml-1">Search</button>
+                    <button type="submit" className="btn ml-1">Search</button>
                 </form>
             </div>
         );
@@ -62,16 +62,16 @@ export default function Search () {
                     <div className="form-group">
                         <input type="search" className="form-control" id="courseSearchID" placeholder="Course Search" onChange={e => setSearchValue(e.target.value)}/>
                     </div>
-                    <button type="submit" className="btn btn-success ml-1">Search</button>
+                    <button type="submit" className="btn ml-1">Search</button>
                 </form>
-                <div className="searchResultList mt-2">
+                <div className="searchResultList">
                     {searchResults.map(result => (
                         <div className = "row ml-1" key={result._id}>
-                            <button onClick={() => handleClick(result)} className="searchResultItem btn">
+                            <div onClick={() => handleClick(result)} className="btn searchResultItem">
                                 <div className="courseName">
                                     {result.name}
                                 </div>
-                            </button>
+                            </div>
                         </div>
                     ))}
                 </div>

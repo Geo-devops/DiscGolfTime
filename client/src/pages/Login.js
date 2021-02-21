@@ -32,9 +32,9 @@ export default function Login ({ setToken }) {
         <div>
             <div className="container">
                 
-                <h1 className="text-center m-4"></h1>
-                
+                <h1 className="text-center m-4">
                 <img alt="logo" src={logo}/>
+                </h1>
                 
                 <div className="row">
                     <div className="col-sm-6 px-5">
@@ -66,7 +66,7 @@ export default function Login ({ setToken }) {
                                         />
                                     </div>
                                 </div>
-                            <button className="btn btn-success" type="submit">
+                            <button className="btn" type="submit">
                                 Log In
                             </button>
                             </div>

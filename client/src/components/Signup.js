@@ -87,7 +87,7 @@ export default function Signup({ setToken }) {
                 />
             </div>
           </div>
-          <button className="btn btn-success" type="submit">
+          <button className="btn" type="submit">
             Sign Up
           </button>
         </div>
