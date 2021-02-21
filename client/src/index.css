@@ -32,10 +32,11 @@ code {
 /* The popup form - hidden by default */
 .form-popup {
   padding: 10px;
-  background-color: #383f57;
+  background-color: #2a2e3d;
   display: none;
   border-radius: 10px;
   position: fixed;
+  width: 250px;
   bottom: 0;
   right: 15px;
   border: 3px solid #f1f1f1;
@@ -50,6 +51,8 @@ code {
 
 #messageBox {
   border-radius: 5px;
+  background-color: rgb(250, 250, 250);
+  font-size: small;
 }
 
 /* Full-width input fields */
@@ -84,7 +87,7 @@ code {
 } */
 
 .btn-send {
-  background-color: #292b35;
+  background-color: #45495e;
   float: right;
   color: white;
   padding: 10px 10px;
@@ -125,6 +128,7 @@ code {
 }
 
 .message-list {
+  background-color: rgb(250, 250, 250);
   max-height: 250px;
   overflow-y: auto;
 }
@@ -133,6 +137,7 @@ code {
   max-height: 500px;
   overflow-y: auto;
   overflow-x: hidden;
+  /* width: 300px; */
 }
 
 .postUser {
@@ -155,11 +160,12 @@ body {
 }
 
 .searchResultItem {
-  background-color: rgb(70, 135, 219);
+  background-color: #2b62b4;
   color: white;
   /* font-size: small; */
   margin-top: 5px;
   padding: 5px;
+  font-size: 14px;
 }
 
 .navbar {
@@ -212,4 +218,20 @@ body {
 
 .postContent {
   font-size: 12px;
+}
+
+.google-map {
+  width: 100%;
+  height: 375px;
+}
+
+.mainpagetext {
+  /* padding: 10px; */
+  /* font-weight: 400; */
+  color: rgb(66, 66, 66);
+  /* font-kerning: none; */
+}
+
+h1 {
+  color: rgb(56, 56, 56);
 }

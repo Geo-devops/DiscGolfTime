@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Search from "./Search";
-import Map from "./Map";
+// import Map from "./Map";
 import UserNavbar from "../components/Navbar"
 import AUTH from "../utils/AUTH"
 
@@ -40,11 +40,24 @@ export default function SearchMap () {
                     Welcome to Tee Time!
                 </h1>
             </div>
-            <div className = "col-4">
-                <Search />
-            </div>
-            <div className = "col-8">
-                <Map />
+            <div className = "row mt-3">
+                {/* <div className="col-1"></div> */}
+                <div className = "col-6">
+                    <Search />
+                </div>
+                <div className = "col-5">
+                    <p className="mainpagetext">
+                        Use Tee Time to search for your favorite disc golf courses in North Carolina.
+                    </p>
+                    <p className="mainpagetext">
+                        Once you have selected a course, you will be taken to that course's main page where you can view course information, use the map to find your way there, view other users' posts about the course, and post your own content.
+                    </p>
+                    <p className="mainpagetext">
+                        You can also use the chat function in the navbar to chat live with other users!
+                    </p>
+                </div>
+                <div className="col-1"></div>
+                {/* <div className="col-1"></div> */}
             </div>
         </div>
         </div>

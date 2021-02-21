@@ -56,7 +56,9 @@ export default function CoursePage({courseName}) {
             }
         })
 
-        console.log('Post: ', post)
+        // console.log('Post: ', post)
+        document.getElementById("postBox").value = '';
+        getPosts()
     }
 
     useEffect(() => {
